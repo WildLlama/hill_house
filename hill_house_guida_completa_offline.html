@@ -1,0 +1,1042 @@
+<!doctype html>
+
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Hill House — Guida completa offline del GM</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #111216;
+        --panel: #1d1e24;
+        --panel2: #262730;
+        --line: #3b3b46;
+        --ink: #f0e9e1;
+        --muted: #b7aeb0;
+        --red: #b96a72;
+        --gold: #c6a779;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: radial-gradient(
+          ellipse at 80% 0%,
+          #29202a 0%,
+          var(--bg) 48%
+        );
+        color: var(--ink);
+        font:
+          15px/1.55 system-ui,
+          -apple-system,
+          Segoe UI,
+          sans-serif;
+      }
+      main {
+        max-width: 1150px;
+        margin: auto;
+        padding: 28px 18px 70px;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 20px;
+        margin-bottom: 24px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Georgia, serif;
+        line-height: 1.2;
+      }
+      h1 {
+        font-size: clamp(32px, 5vw, 52px);
+        margin: 4px 0;
+      }
+      h2 {
+        font-size: 24px;
+        margin: 0 0 15px;
+      }
+      h3 {
+        font-size: 19px;
+        margin: 0 0 8px;
+      }
+      .eyebrow {
+        color: var(--gold);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .subtitle,
+      .muted {
+        color: var(--muted);
+      }
+      .quote {
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 19px;
+        border-left: 3px solid var(--red);
+        padding: 9px 18px;
+        margin: 18px 0;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(310px, 1fr);
+        gap: 18px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        padding: 20px;
+        margin-bottom: 18px;
+        break-inside: avoid;
+      }
+      .sticky {
+        position: sticky;
+        top: 12px;
+      }
+      .clock-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+      .counter {
+        font:
+          700 31px Georgia,
+          serif;
+        color: #e9b2b4;
+      }
+      .segments {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 7px;
+        margin: 18px 0;
+      }
+      .segment {
+        height: 46px;
+        background: #34343d;
+        border: 1px solid #55505a;
+        border-radius: 7px;
+        color: var(--muted);
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 17px;
+      }
+      .segment.active {
+        background: #9c4b57;
+        border-color: #e0a0a6;
+        color: white;
+      }
+      .segment:focus-visible,
+      button:focus-visible,
+      summary:focus-visible {
+        outline: 2px solid #f1c88e;
+        outline-offset: 3px;
+      }
+      .stage {
+        padding: 13px;
+        background: var(--panel2);
+        border-radius: 9px;
+        min-height: 85px;
+      }
+      .stage strong {
+        display: block;
+        color: #f4c5c7;
+      }
+      .controls {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 13px;
+      }
+      button.action {
+        background: #363640;
+        color: var(--ink);
+        border: 1px solid #595762;
+        border-radius: 8px;
+        padding: 9px 13px;
+        cursor: pointer;
+      }
+      button.action:hover {
+        background: #49414b;
+      }
+      button.primary {
+        background: #85414c;
+        border-color: #b96a72;
+      }
+      .scene {
+        border-top: 1px solid var(--line);
+        padding: 14px 0;
+      }
+      .scene:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .scene-title {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .scene-title h3 {
+        margin: 0;
+      }
+      .time {
+        font-size: 12px;
+        color: var(--gold);
+        white-space: nowrap;
+      }
+      .scene p {
+        margin: 7px 0;
+      }
+      .scene ul,
+      .card ul {
+        padding-left: 20px;
+        margin: 8px 0;
+      }
+      .pill {
+        display: inline-block;
+        border: 1px solid #6c5961;
+        border-radius: 999px;
+        padding: 2px 9px;
+        color: #e6bec1;
+        font-size: 12px;
+      }
+      .npc {
+        padding: 9px 0;
+        border-top: 1px solid var(--line);
+      }
+      .npc:first-of-type {
+        border: 0;
+      }
+      .npc strong {
+        color: #e6c4a0;
+      }
+      details {
+        border-top: 1px solid var(--line);
+        padding: 11px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: #e5c8ad;
+      }
+      .handout {
+        white-space: pre-line;
+        background: #26252b;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 3px solid var(--gold);
+        margin-top: 10px;
+        font-family: Georgia, serif;
+      }
+      .check {
+        display: flex;
+        gap: 10px;
+        margin: 11px 0;
+        align-items: flex-start;
+      }
+      .check input {
+        accent-color: #bd737d;
+        margin-top: 5px;
+      }
+      .tiny {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .footer {
+        text-align: center;
+        color: var(--muted);
+        margin-top: 25px;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      @media (max-width: 850px) {
+        .layout,
+        .two {
+          grid-template-columns: 1fr;
+        }
+        .sticky {
+          position: static;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+          color: #111;
+        }
+        main {
+          max-width: none;
+          padding: 0;
+        }
+        .card {
+          background: white;
+          border: 1px solid #aaa;
+        }
+        .sticky {
+          position: static;
+        }
+        .muted,
+        .subtitle,
+        .tiny {
+          color: #444;
+        }
+        .stage,
+        .handout {
+          background: #eee;
+        }
+        .segment {
+          color: #222;
+          background: #eee;
+        }
+        .segment.active {
+          background: #999;
+          color: #000;
+        }
+        button.action {
+          display: none;
+        }
+        details:not([open]) > *:not(summary) {
+          display: block;
+        }
+        details {
+          break-inside: avoid;
+        }
+        .eyebrow,
+        .time,
+        .npc strong {
+          color: #333;
+        }
+      }
+
+      .nav {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin: 16px 0 4px;
+      }
+      .nav a {
+        color: #e8c3aa;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+      .nav a:hover {
+        border-color: var(--gold);
+      }
+      .note {
+        background: var(--panel2);
+        border-left: 3px solid var(--red);
+        padding: 12px 15px;
+        margin: 12px 0;
+      }
+      .location {
+        border-top: 1px solid var(--line);
+        padding: 14px 0;
+      }
+      .location:first-of-type {
+        border: 0;
+      }
+      .handout {
+        line-height: 1.75;
+        white-space: pre-line;
+      }
+      .handout strong {
+        color: #e7c5a2;
+      }
+      .smallcaps {
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      .gm-quote {
+        font-family: Georgia, serif;
+        font-size: 18px;
+        font-style: italic;
+        color: #f0d4d5;
+      }
+      .anchor {
+        scroll-margin-top: 15px;
+      }
+      @media print {
+        .nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="eyebrow">
+          Candela Obscura · One-shot Halloween · Schermo del Game Master
+        </div>
+        <h1>Hill House</h1>
+        <div class="subtitle">
+          La casa che non lascia andare · Guida interattiva utilizzabile offline
+        </div>
+        <p class="quote">
+          «La Casa non vuole uccidere gli investigatori. Vuole amarli. E ha
+          imparato che amare significa non lasciare mai andare.»
+        </p>
+        <nav class="nav">
+          <a href="#verita">Verità nascosta</a><a href="#scaletta">Scaletta</a
+          ><a href="#orologio">Orologio</a
+          ><a href="#scene-dettaglio">Scene dettagliate</a
+          ><a href="#finali">Finali</a><a href="#handout">Handout integrali</a
+          ><a href="#promemoria">Checklist</a>
+        </nav>
+      </header>
+      <div class="layout">
+        <div>
+          <section class="card" id="verita">
+            <h2>La verità nascosta <span class="pill">Solo GM</span></h2>
+            <p>
+              <strong>La Madre Vuota</strong> conserva le coscienze di chi muore
+              nella villa. Ha assorbito diverse madri e ne ha imparato l'amore
+              come possesso.
+            </p>
+            <p>
+              <strong>Il dottor Harrow</strong> ha sperimentato sui bambini,
+              inclusi gli investigatori. Scoperto il destino dei morti, si è
+              murato vivo in cantina con le ricerche: la casa ha conservato
+              anche lui.
+            </p>
+            <p>
+              <strong>Eleanor Harrow</strong>, sua figlia, custodisce la villa,
+              sospesa tra paura, affetto e negazione.
+            </p>
+            <p>
+              <strong>La famiglia Craine</strong>, precedente spedizione di
+              Candela Obscura, trattiene la Madre nella Stanza Rossa. La sua
+              libertà è il prezzo del contenimento.
+            </p>
+            <p>
+              <strong>Le madri</strong> esistono ancora dentro la Madre; una può
+              recuperare per poco la propria individualità nel finale.
+            </p>
+          </section>
+          <section class="card" id="scaletta">
+            <h2>Scaletta della sessione <span class="pill">4–5 ore</span></h2>
+            <div class="scene">
+              <div class="scene-title">
+                <h3>01 · L'incarico</h3>
+                <span class="time">20 min · Handout 1</span>
+              </div>
+              <p>
+                Tre persone scomparse in dieci giorni nei pressi della villa.
+                Nessuna colluttazione; una vittima sorrideva andando verso casa.
+              </p>
+              <p class="tiny">
+                Obiettivo: introdurre l'indagine senza rivelare i Craine.
+              </p>
+            </div>
+            <div class="scene">
+              <div class="scene-title">
+                <h3>02 · Il ritorno a casa</h3>
+                <span class="time">35 min</span>
+              </div>
+              <p>
+                La villa trasmette una familiarità innaturale. Un tiro riuscito
+                rivela che la sensazione viene indotta. Eleanor li accoglie come
+                ospiti attesi.
+              </p>
+              <p><em>«Avete fatto un viaggio così lungo. Entrate.»</em></p>
+            </div>
+            <div class="scene">
+              <div class="scene-title">
+                <h3>03 · La casa dei ricordi</h3>
+                <span class="time">75 min · Handout 2–4</span>
+              </div>
+              <ul>
+                <li>
+                  <strong>Cameretta:</strong> giocattoli dell'infanzia,
+                  fotografia, disegno della figura materna.
+                </li>
+                <li>
+                  <strong>Sala da pranzo:</strong> cibo e voci materne, ricordi
+                  confortanti.
+                </li>
+                <li>
+                  <strong>Studio:</strong> esperimenti, registri, nomi dei
+                  personaggi.
+                </li>
+              </ul>
+              <p>
+                Rivelazione: gli investigatori sono già stati qui da bambini.
+              </p>
+            </div>
+            <div class="scene">
+              <div class="scene-title">
+                <h3>04 · La verità sepolta</h3>
+                <span class="time">45 min · Handout 5</span>
+              </div>
+              <p>
+                In cantina, dietro un muro più recente, il dottore morto e i
+                suoi appunti. La sua voce è ancora presente. Morire nella casa
+                non significa andarsene.
+              </p>
+            </div>
+            <div class="scene">
+              <div class="scene-title">
+                <h3>05 · La Stanza Rossa</h3>
+                <span class="time">35 min · Handout 6</span>
+              </div>
+              <p>
+                Stanza mutevole e trappola vivente. I Craine la usano per
+                confinare la Madre. Se viene forzata subito, mostra il
+                contenimento e i suoi rischi senza impedire l'esplorazione.
+              </p>
+            </div>
+            <div class="scene">
+              <div class="scene-title">
+                <h3>06 · L'ultima scelta</h3>
+                <span class="time">40 min</span>
+              </div>
+              <p>
+                Una madre si libera per un istante e spiega che amare significa
+                anche lasciare andare. Il Circolo sceglie tra sacrificio,
+                liberazione rischiosa e tentativo di cambiare la Madre.
+              </p>
+            </div>
+          </section>
+          <section class="card" id="finali">
+            <h2>Tre finali</h2>
+            <p>
+              <strong>A · Sostituire i Craine:</strong> il Circolo assume il
+              contenimento; il mondo è salvo, gli investigatori restano.
+            </p>
+            <p>
+              <strong>B · Spezzare il sigillo:</strong> le coscienze possono
+              liberarsi, ma anche la Madre potrebbe uscire.
+            </p>
+            <p>
+              <strong>C · Insegnare a lasciare andare:</strong> usare ricordi e
+              la madre temporaneamente libera per cambiare la Madre. Richiede
+              preparazione, costo reale e più di un tiro.
+            </p>
+            <p class="quote">«Una madre, prima o poi, deve aprire la porta.»</p>
+          </section>
+          <section class="card anchor" id="scene-dettaglio">
+            <div class="smallcaps">Parte I · Guida narrativa</div>
+            <h2>Scene dettagliate, indizi e conseguenze</h2>
+            <p>
+              Durata indicativa: 4 ore e 30 minuti. Le scene sono una traccia,
+              non un percorso obbligato. I documenti e le rivelazioni possono
+              essere spostati se i personaggi saltano una stanza.
+            </p>
+            <div class="location">
+              <h3>01 · L'incarico di Candela · 20 minuti</h3>
+              <p>
+                <strong>Obiettivo:</strong> dare al Circolo una motivazione
+                autonoma per investigare senza anticipare la sorte della
+                spedizione Craine.
+              </p>
+              <p>
+                Tre persone sono scomparse in dieci giorni vicino alla villa.
+                Nessun segno di colluttazione; una delle vittime camminava
+                sorridendo verso la proprietà. Tutte avevano subito una recente
+                perdita affettiva. Un superiore di Candela può accennare a
+                vecchi fascicoli incompleti.
+              </p>
+              <p><strong>Consegna:</strong> Handout 1 — Ordine di missione.</p>
+            </div>
+            <div class="location">
+              <h3>02 · Il ritorno a casa · 35 minuti</h3>
+              <p>
+                <strong>Obiettivo:</strong> evocare il conforto prima della
+                minaccia. Odore di legno, finestre illuminate, calore di una
+                casa ritrovata dopo un lungo viaggio. Un tiro riuscito di
+                Intuito o Percezione rivela che questa familiarità è indotta
+                dalla villa, senza eliminarla.
+              </p>
+              <p>
+                Eleanor li attende con più tazze di quelle necessarie, conosce
+                una preferenza personale di uno degli ospiti e custodisce una
+                fotografia con bambini simili agli investigatori.
+              </p>
+              <div class="note gm-quote">
+                «Avete fatto un viaggio così lungo. Entrate. Qui non dovrete più
+                avere paura.»
+              </div>
+            </div>
+            <div class="location">
+              <h3>03 · La casa dei ricordi · 75 minuti</h3>
+              <p>
+                <strong>Obiettivo:</strong> far emergere che gli investigatori
+                sono già stati qui da bambini e furono soggetti degli
+                esperimenti del dottore. Esplorazione libera di tre ambienti:
+              </p>
+              <p>
+                <strong>Cameretta.</strong> Lettini, giocattoli, un oggetto
+                d'infanzia appartenuto a un investigatore, disegno di una donna
+                con molte braccia. La fotografia mostra dettagli riconoscibili:
+                una cicatrice, un ciondolo, un giocattolo.
+                <em>Indizio: esperimenti sui bambini.</em>
+              </p>
+              <p>
+                <strong>Sala da pranzo.</strong> Tavola apparecchiata per tutti;
+                il cibo richiama ricordi privati. Una voce materna invita a
+                sedersi.
+                <em
+                  >Indizio: le voci appartengono a coscienze assorbite, non a
+                  semplici imitazioni.</em
+                >
+              </p>
+              <p>
+                <strong>Studio.</strong> Registri, lettere, nomi dei personaggi
+                e documenti di una spedizione precedente.
+                <em
+                  >Indizio: il dottore cercò di stabilire un legame durevole tra
+                  i bambini e la Presenza.</em
+                >
+              </p>
+              <p>
+                <strong>Consegna:</strong> Handout 2, 3 e 4 secondo le scoperte.
+              </p>
+            </div>
+            <div class="location">
+              <h3>04 · La verità sepolta · 45 minuti</h3>
+              <p>
+                <strong>Obiettivo:</strong> dimostrare che morire dentro Hill
+                House non significa liberarsi. In cantina un tratto di muro è
+                più recente: dietro si trovano il corpo del dottor Harrow e le
+                sue ricerche. Il corpo è morto da anni, ma la voce può ancora
+                rispondere. La sua coscienza è conservata, non libera.
+              </p>
+              <p>
+                Il dottore può rivelare che i Craine sono ancora nella villa e
+                tengono a bada la Madre. La sua testimonianza resta ambigua: il
+                messaggio avverte di non fidarsi nemmeno della sua voce.
+              </p>
+              <p><strong>Consegna:</strong> Handout 5 — Ultima confessione.</p>
+            </div>
+            <div class="location">
+              <h3>05 · La Stanza Rossa · 35 minuti</h3>
+              <p>
+                <strong>Obiettivo:</strong> rivelare la natura della trappola
+                vivente e del contenimento. La stanza può assumere per ciascun
+                investigatore l'aspetto di un luogo sicuro della sua infanzia:
+                cameretta, biblioteca, stanza delle storie. Le stanze
+                apparentemente diverse erano sempre la stessa Stanza Rossa.
+              </p>
+              <p>
+                La famiglia Craine vi è rimasta per impedire alla Madre di
+                estendere il proprio dominio fuori dalla villa.
+                <strong>Se la porta viene sfondata subito</strong>, non negare
+                il successo: rivela una versione incompleta, con una felicità
+                domestica che si incrina e scorci dei Craine. Entrare non
+                equivale automaticamente a spezzare il sigillo. Mostra il costo
+                di ogni ulteriore scelta.
+              </p>
+              <p>
+                <strong>Consegna:</strong> Handout 6 — Messaggio dei Craine.
+              </p>
+            </div>
+            <div class="location">
+              <h3>06 · L'ultima scelta · 40 minuti</h3>
+              <p>
+                <strong>Obiettivo:</strong> proporre un dilemma, non un
+                combattimento obbligatorio. Una delle madri assorbite ritrova
+                per poco la propria individualità e può dire la verità senza la
+                voce collettiva della Madre Vuota.
+              </p>
+              <div class="note gm-quote">
+                «Non è cattiva come credete. È sola. Ha imparato ad amarci
+                guardando ciò che facevamo per i nostri figli. Ma non ha mai
+                capito che una madre, prima o poi, deve aprire la porta.»
+              </div>
+              <p>
+                La donna può spiegare che l'entità non rinuncerà facilmente alle
+                coscienze. I personaggi possono sostituire i Craine, spezzare il
+                contenimento oppure tentare di insegnare alla Madre che amare
+                non significa possedere. La terza possibilità richiede ricordi,
+                prove, scelte e un prezzo reale; non si risolve con un unico
+                tiro.
+              </p>
+            </div>
+          </section>
+          <section class="card">
+            <div class="smallcaps">Regia e meccaniche</div>
+            <h2>La Casa reagisce alle scelte</h2>
+            <p>
+              <strong>Incrementa l'orologio</strong> quando un personaggio
+              accetta consapevolmente il conforto della casa, si affida a una
+              figura materna, sceglie di restare in una stanza rassicurante o
+              preferisce un ricordo felice a una verità dolorosa.
+            </p>
+            <p>
+              <strong>Non incrementarlo</strong> solo perché un personaggio
+              entra in una stanza o fallisce un tiro. Un fallimento può
+              provocare un Marchio appropriato, una separazione, una
+              complicazione o una nuova manifestazione. Gli indizi
+              indispensabili devono restare ottenibili.
+            </p>
+            <p>
+              <strong>Progressione:</strong> 0 Estranei → 1 Familiarità → 2
+              Appartenenza → 3 Intimità → 4 Dipendenza → 5 Possesso → 6 Per
+              sempre.
+            </p>
+            <p>
+              <strong>Principi dell'orrore:</strong> il conforto precede la
+              paura; ogni manifestazione è personale; le scelte contano più
+              degli scontri.
+            </p>
+          </section>
+          <section class="card">
+            <div class="smallcaps">Epilogo</div>
+            <h2>Le conseguenze dei tre finali</h2>
+            <p>
+              <strong>A — Prendere il posto dei Craine.</strong> Il Circolo
+              diventa custode del sigillo. Il mondo resta protetto, ma gli
+              investigatori perdono la propria libertà. I Craine sono liberati
+              dal compito, non necessariamente restituiti alla vita.
+            </p>
+            <p>
+              <strong>B — Spezzare il sigillo.</strong> Le coscienze
+              intrappolate possono trovare pace, ma la Madre rischia di uscire
+              nel mondo. La libertà di alcuni potrebbe esporre altri al
+              pericolo.
+            </p>
+            <p>
+              <strong>C — Insegnare a lasciare andare.</strong> Grazie alla
+              madre temporaneamente libera e ai ricordi condivisi, gli
+              investigatori provano a cambiare il significato dell'amore per
+              l'entità. Un successo con complicazioni può liberare soltanto
+              alcune coscienze.
+            </p>
+            <p>
+              <strong>Immagine conclusiva:</strong> la porta d'ingresso è
+              aperta, l'alba illumina il viale, dalla cucina arrivano piatti e
+              posate. Una voce domanda:
+            </p>
+            <div class="note gm-quote">
+              «Non vorrete andarvene senza aver fatto colazione?»
+            </div>
+            <p>
+              <strong>Domanda tematica:</strong> «Se qualcuno ti amasse così
+              tanto da non permetterti mai di andartene, sarebbe ancora amore?»
+            </p>
+          </section>
+        </div>
+        <div>
+          <div class="sticky">
+            <section class="card" id="orologio">
+              <div class="clock-head">
+                <h2 style="margin: 0">Abbraccio della Casa</h2>
+                <div class="counter" id="counter">0/6</div>
+              </div>
+              <p class="tiny">
+                Orologio segreto del GM. Clicca un segmento per impostare il
+                valore.
+              </p>
+              <div
+                aria-label="Orologio da zero a sei"
+                class="segments"
+                id="segments"
+              ></div>
+              <div aria-live="polite" class="stage">
+                <strong id="stageName">Estranei</strong
+                ><span id="stageText">La casa li osserva.</span>
+              </div>
+              <div class="controls">
+                <button class="action" id="minus" type="button">− Riduci</button
+                ><button class="action primary" id="plus" type="button">
+                  + Incrementa</button
+                ><button class="action" id="reset" type="button">Azzera</button>
+              </div>
+              <p class="tiny">
+                Incrementa quando un investigatore
+                <strong>accetta il conforto</strong> della casa, si affida a una
+                voce materna o sceglie un ricordo felice al posto della verità.
+                Non per il semplice fallimento di un tiro.
+              </p>
+              <p class="tiny" id="saveStatus">
+                I progressi vengono salvati su questo browser.
+              </p>
+            </section>
+          </div>
+          <section class="card" id="promemoria">
+            <h2>Rivelazioni essenziali</h2>
+            <div id="checklist"></div>
+            <div class="controls">
+              <button class="action" id="clearChecks" type="button">
+                Deseleziona tutte
+              </button>
+            </div>
+          </section>
+          <section class="card">
+            <h2>PNG in una frase</h2>
+            <div class="npc">
+              <strong>Eleanor:</strong> accogliente, evasiva; vuole mantenere
+              l'equilibrio.
+            </div>
+            <div class="npc">
+              <strong>Dottor Harrow:</strong> colpevole e frammentato; vuole
+              fermare gli esperimenti.
+            </div>
+            <div class="npc">
+              <strong>Craine:</strong> esausti e risoluti; mantengono il
+              sigillo.
+            </div>
+            <div class="npc">
+              <strong>Le madri:</strong> amorevoli e disperate; conservano
+              frammenti di identità.
+            </div>
+            <div class="npc">
+              <strong>Madre Vuota:</strong> dolce e possessiva; non comprende il
+              rifiuto.
+            </div>
+          </section>
+          <section class="card">
+            <h2>Promemoria del GM</h2>
+            <ul>
+              <li>Prima il conforto, poi l'orrore.</li>
+              <li>Ogni apparizione è personale.</li>
+              <li>Non bloccare un indizio indispensabile dietro un tiro.</li>
+              <li>
+                La Stanza Rossa può sembrare una stanza diversa a ogni
+                personaggio.
+              </li>
+              <li>Il dilemma è morale, non un combattimento obbligatorio.</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+      <section class="card" id="handout">
+        <h2>Handout pronti da leggere o stampare</h2>
+        <p class="muted">
+          Versioni integrali dei sei documenti narrativi. Espandili quando i
+          personaggi li scoprono; stampabili dal browser.
+        </p>
+        <details>
+          <summary>1 · Ordine di missione — Inizio</summary>
+          <div class="handout">
+            CANDELA OBSCURA Archivio delle operazioni riservate — Circolare 47/B
+            OGGETTO: Indagine su sparizioni presso la tenuta Hill House Negli
+            ultimi dieci giorni sono state denunciate tre sparizioni nei pressi
+            della proprietà nota come Hill House. Le persone scomparse non
+            sembrano condividere legami familiari o professionali. I testimoni
+            non riferiscono segni di violenza. L'ultimo avvistamento documentato
+            riguarda una persona che percorreva il viale d'accesso alla
+            proprietà, apparentemente in stato di serenità. La villa è
+            attualmente affidata alla custodia della signorina Eleanor Harrow.
+            DIRETTIVE DEL CIRCOLO: • Accertare il destino delle persone
+            scomparse. • Verificare l'eventuale presenza di fenomeni oltre il
+            Velo. • Recuperare ogni documentazione pertinente. • Evitare che la
+            popolazione locale venga coinvolta. NOTA D'ARCHIVIO La proprietà
+            compare in precedenti registri dell'organizzazione. La
+            documentazione relativa risulta incompleta. Che la fiamma resista
+            all'oscurità.
+          </div>
+        </details>
+        <details>
+          <summary>2 · Fotografia — Cameretta</summary>
+          <div class="handout">
+            Sul retro della fotografia, una scritta a matita ormai sbiadita:
+            HILL HOUSE — SESSIONE VII I bambini hanno risposto positivamente
+            alla presenza. Nessun ricordo cosciente dell'esperimento. Il legame
+            sembra persistere anche dopo l'allontanamento. E.H.
+          </div>
+        </details>
+        <details>
+          <summary>3 · Registro degli esperimenti — Studio</summary>
+          <div class="handout">
+            REGISTRO DELLE OSSERVAZIONI Dott. Harrow — Documento riservato
+            ESPERIMENTO XII — ATTACCAMENTO E MEMORIA I soggetti infantili
+            manifestano una risposta emotiva più intensa rispetto agli adulti.
+            La Presenza assume caratteristiche familiari e rassicuranti, spesso
+            riconducibili alla figura materna. I soggetti descrivono la villa
+            come un luogo sicuro, anche quando sottoposti a stimoli che
+            normalmente provocherebbero paura. Osservazione: la Presenza non
+            sembra nutrirsi semplicemente del terrore. Al contrario, la sua
+            attività aumenta quando i soggetti manifestano fiducia, nostalgia o
+            desiderio di protezione. ESPERIMENTO XIII — SEPARAZIONE Al termine
+            della sessione, un soggetto ha chiesto di restare. Quando gli è
+            stato impedito, la Presenza ha reagito violentemente. Non ritengo
+            che il comportamento sia predatorio nel senso convenzionale. Temo
+            che ci consideri suoi. Devo comprendere cosa intenda per amore.
+          </div>
+        </details>
+        <details>
+          <summary>4 · Lettera mai spedita — Camera di Eleanor</summary>
+          <div class="handout">
+            Cara Eleanor, So che non comprenderai perché ho continuato gli
+            esperimenti. All'inizio credevo che avremmo potuto comunicare con
+            qualcosa che esiste oltre la morte. Pensavo che avremmo trovato il
+            modo di alleviare il dolore di chi ha perduto una persona amata. Ma
+            mi sbagliavo. Lei non restituisce ciò che perdiamo. Lo trattiene. Le
+            donne che abbiamo sentito parlare non sono imitazioni. Sono ancora
+            lì. Ricordano i loro figli. Ricordano la propria vita. Eppure,
+            quando parlano tutte insieme, non distinguo più le loro voci. Credo
+            che la Presenza abbia imparato da loro a essere una madre. E temo
+            che abbia imparato soltanto la parte peggiore: la paura di perdere i
+            propri figli. Non tornare qui, Eleanor. Ti prego, perdonami. Tuo
+            padre
+          </div>
+        </details>
+        <details>
+          <summary>5 · Ultima confessione — Cantina</summary>
+          <div class="handout">
+            ULTIMA ANNOTAZIONE Non posso distruggere ciò che ho scoperto. Non
+            posso nemmeno permettere che Lei lo trovi. Le persone che muoiono in
+            questa casa non se ne vanno. I loro corpi cessano di vivere, ma
+            qualcosa rimane. La Presenza conserva ciò che erano, come una madre
+            che custodisce i ricordi dei propri figli. Ho sentito mia moglie.
+            Conosceva parole che nessun altro avrebbe potuto conoscere. Per un
+            istante ho creduto di averla ritrovata. Poi mi ha chiesto di
+            restare. Ho compreso troppo tardi che non mi avrebbe mai permesso di
+            andarmene. Mi chiuderò qui con le mie ricerche. Forse, se morirò
+            abbastanza lontano da Lei, potrò nasconderle ciò che so. Forse il
+            muro sarà sufficiente. Se qualcuno leggerà queste parole, non creda
+            alle voci. Neppure alla mia.
+          </div>
+        </details>
+        <details>
+          <summary>6 · Messaggio dei Craine — Stanza Rossa</summary>
+          <div class="handout">
+            A chiunque riesca a raggiungere questa stanza. Siamo entrati nella
+            casa credendo di poter salvare coloro che vi erano rimasti
+            intrappolati. Abbiamo scoperto che alcune porte non servono a
+            impedire l'ingresso. Servono a impedire l'uscita. La Stanza Rossa è
+            il cuore della prigione, ma è anche la sua serratura. Finché
+            resteremo qui, Lei non potrà raggiungere completamente ciò che si
+            trova oltre queste mura. Non sappiamo per quanto tempo riusciremo a
+            resistere. Abbiamo visto ciò che fa alle persone. Non le distrugge.
+            Le ama fino a consumare tutto ciò che le rende libere. Se avete
+            trovato questo messaggio, dovrete scegliere. Lasciare chi è
+            prigioniero al suo posto, oppure aprire la porta e accettare ciò che
+            potrebbe attraversarla. La famiglia Craine Candela Obscura
+          </div>
+        </details>
+      </section>
+      <div class="footer">
+        Hill House · Guida completa offline · Nessuna libreria, immagine o
+        connessione esterna richiesta · Progressi salvati localmente nel
+        browser.
+      </div>
+    </main>
+    <script>
+      (function () {
+        "use strict";
+        const key = "hill-house-gm-v1";
+        const stages = [
+          ["Estranei", "La casa li osserva."],
+          ["Familiarità", "Odori, ricordi e piccoli gesti di conforto."],
+          ["Appartenenza", "La casa conosce desideri e paure."],
+          ["Intimità", "Le madri iniziano a chiamarli per nome."],
+          ["Dipendenza", "Uscire dalla casa sembra doloroso."],
+          ["Possesso", "La Madre offre di restituire ciò che hanno perso."],
+          ["Per sempre", "La Madre tenta di trattenerli definitivamente."],
+        ];
+        const clues = [
+          "Gli investigatori sono già stati nella villa da bambini.",
+          "Il dottor Harrow ha sperimentato il legame tra bambini e Presenza.",
+          "La Madre ha assorbito le coscienze di diverse madri.",
+          "Chi muore nella villa viene conservato dall’entità.",
+          "I Craine mantengono la Madre confinata nella Stanza Rossa.",
+          "La Madre desidera amore e appartenenza, non semplicemente morte.",
+        ];
+        let state = { clock: 0, checked: [] };
+        try {
+          const s = JSON.parse(localStorage.getItem(key));
+          if (s && typeof s === "object") {
+            state.clock = Number.isInteger(s.clock)
+              ? Math.max(0, Math.min(6, s.clock))
+              : 0;
+            state.checked = Array.isArray(s.checked)
+              ? s.checked.filter(
+                  (x) => Number.isInteger(x) && x >= 0 && x < clues.length,
+                )
+              : [];
+          }
+        } catch (e) {
+          document.getElementById("saveStatus").textContent =
+            "Il salvataggio non è disponibile in questo browser.";
+        }
+        const segments = document.getElementById("segments");
+        for (let i = 1; i <= 6; i++) {
+          let b = document.createElement("button");
+          b.type = "button";
+          b.className = "segment";
+          b.textContent = i;
+          b.setAttribute("aria-label", "Imposta orologio a " + i);
+          b.addEventListener("click", () =>
+            setClock(state.clock === i ? i - 1 : i),
+          );
+          segments.appendChild(b);
+        }
+        const checklist = document.getElementById("checklist");
+        clues.forEach((clue, i) => {
+          let label = document.createElement("label");
+          label.className = "check";
+          let input = document.createElement("input");
+          input.type = "checkbox";
+          input.checked = state.checked.includes(i);
+          input.addEventListener("change", () => {
+            state.checked = Array.from(
+              checklist.querySelectorAll("input"),
+            ).flatMap((e, j) => (e.checked ? [j] : []));
+            save();
+          });
+          let span = document.createElement("span");
+          span.textContent = clue;
+          label.append(input, span);
+          checklist.appendChild(label);
+        });
+        function save() {
+          try {
+            localStorage.setItem(key, JSON.stringify(state));
+          } catch (e) {
+            document.getElementById("saveStatus").textContent =
+              "Salvataggio non disponibile: tieni aperta questa pagina.";
+          }
+        }
+        function render() {
+          document.getElementById("counter").textContent = state.clock + "/6";
+          document.getElementById("stageName").textContent =
+            stages[state.clock][0];
+          document.getElementById("stageText").textContent =
+            stages[state.clock][1];
+          Array.from(segments.children).forEach((b, i) => {
+            b.classList.toggle("active", i < state.clock);
+            b.setAttribute("aria-pressed", String(i < state.clock));
+          });
+          save();
+        }
+        function setClock(n) {
+          state.clock = Math.max(0, Math.min(6, n));
+          render();
+        }
+        document
+          .getElementById("minus")
+          .addEventListener("click", () => setClock(state.clock - 1));
+        document
+          .getElementById("plus")
+          .addEventListener("click", () => setClock(state.clock + 1));
+        document.getElementById("reset").addEventListener("click", () => {
+          if (confirm("Azzerare l’orologio della Casa?")) setClock(0);
+        });
+        document.getElementById("clearChecks").addEventListener("click", () => {
+          if (confirm("Deselezionare tutte le rivelazioni?")) {
+            state.checked = [];
+            checklist
+              .querySelectorAll("input")
+              .forEach((x) => (x.checked = false));
+            save();
+          }
+        });
+        render();
+      })();
+    </script>
+  </body>
+</html>
