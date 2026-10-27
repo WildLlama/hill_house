@@ -696,6 +696,10 @@ strong.gold {
   color: var(--gold);
 }
 
+.wide2 {
+  grid-column: span 2;
+}
+
 .wide {
   grid-column: 1/-1;
 }
@@ -768,4 +772,9 @@ strong.gold {
 .result > .crit {
   font-weight: bold;
   color: var(--gold);
+}
+
+.chapters > a.active {
+  color: var(--gold);
+  font-weight: bold;
 }

@@ -100,6 +100,7 @@ window.onload = function () {
     "role",
     "circle",
     "drive",
+    "redroom",
     "unresolved",
     "happyMemories",
     "marks",
