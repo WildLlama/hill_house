@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Candela Obscura · Schermo GM</title>
+  <link href="./style/style.css" rel="stylesheet" />
+  <script src="./script/regole.js"></script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Hill House - La casa che non lascia andare</div>
+      <h1>Regole</h1>
+      <div class="subtitle">Breve compendio di regole di Candela Obscura</div>
+      <nav>
+        <a href="./index.html"><span>Schermo del Game Master</span></a>
+        <span> · </span>
+        <a href="./investigatori.html"><span>Investigatori</span></a>
+        <span> · </span>
+        <a href="./storia.html"><span>Storia</span></a>
+        <span> · </span>
+        <a  href="./regole.html"><span>Regole</span></a>
+      </nav>
+    </header>
+
+    <div class="rules-grid">
+      <section class="rules-section">
+        <h2>01 · Quando tirare</h2>
+        <p>Chiedi un tiro quando l'esito è <strong class="gold">incerto</strong> e il fallimento ha conseguenze interessanti.
+          Altrimenti, descrivi ciò che accade.</p>
+        <p>Il giocatore indica l'obiettivo e l'azione pertinente; il GM chiarisce il rischio prima del tiro.</p>
+        <div class="tag">6 = successo pieno</div>
+        <div class="tag">4–5 = successo con costo</div>
+        <div class="tag">1–3 = conseguenza / insuccesso</div>
+        <p>Con più dadi si considera il <strong class="gold">risultato più alto</strong>. Più 6 significano <strong class="gold">successo
+            critico</strong>, con beneficio aggiuntivo.</p>
+      </section>
+      <section class="rules-section">
+        <h2>02 · Pool di dadi</h2>
+        <p>Si tirano d6 pari al punteggio dell'azione, più eventuali dadi bonus ottenuti spendendo Drive o tramite altre
+          capacità.</p>
+        <p><strong class="gold">Se il punteggio è 0:</strong> tira 2d6 e conserva il più basso (salvo bonus applicabili secondo le
+          regole).</p>
+        <p><strong class="gold">Drive:</strong> il giocatore può spendere punti del Drive associato all'azione per aggiungere dadi al
+          tiro, nei limiti previsti dalla scheda e dalle regole.</p>
+        <p><strong class="gold">Aiutare:</strong> un alleato può contribuire narrativamente e tramite le risorse/capacità consentite.
+        </p>
+      </section>
+      <section class="rules-section">
+        <h2>03 · Conseguenze e resistenza</h2>
+        <p>Conseguenze possibili: peggioramento della situazione, perdita di risorse, separazione, pericolo crescente,
+          marchi o complicazioni narrative.</p>
+        <p><strong class="gold">Resistere:</strong> quando applicabile, il giocatore può spendere la risorsa di resistenza prevista
+          per ridurre o evitare una conseguenza, secondo le regole del gioco.</p>
+        <p>Non bloccare indizi indispensabili dietro un singolo tiro: il costo può essere il tempo, l'esposizione o il
+          pericolo.</p>
+      </section>
+      <section class="rules-section">
+        <h2>04 · Marchi, cicatrici e pericolo</h2>
+        <p><span class="tag">Body</span><span class="tag">Brain</span><span class="tag">Bleed</span></p>
+        <p>
+          <strong class="gold">Body:</strong> danni fisici.<br/>
+          <strong class="gold">Brain:</strong> trauma mentale/emotivo.<br/>
+          <strong class="gold">Bleed:</strong> contaminazione soprannaturale.
+        </p>
+        <p>Quando una categoria raggiunge il limite di marchi previsto, si applicano le regole delle
+          <strong class="gold">cicatrici</strong> e del recupero. Verifica le caselle e gli effetti esatti sulla scheda del
+          personaggio.
+        </p>
+        <p>Una minaccia può infliggere conseguenze anche senza combattimento tradizionale.</p>
+      </section>
+      <section class="rules-section">
+        <h2>05 · Indagine e scene horror</h2>
+        <ul>
+          <li>Descrivi dettagli sensoriali concreti, poi chiedi: «Che cosa fai?»</li>
+          <li>Ogni scena dovrebbe offrire una rivelazione, una scelta o un rischio.</li>
+          <li>Se un indizio è essenziale, rendilo accessibile; usa i tiri per determinarne il prezzo.</li>
+          <li>Fai avanzare la minaccia in risposta a esitazioni, errori o decisioni significative.</li>
+          <li>Alterna tensione, scoperta e brevi pause.</li>
+        </ul>
+      </section>
+      <section class="rules-section">
+        <h2>06 · Domande utili al tavolo</h2>
+        <ul>
+          <li>«Cosa speri di ottenere?»</li>
+          <li>«Come lo fai, concretamente?»</li>
+          <li>«Cosa sei disposto a rischiare?»</li>
+          <li>«Quale ricordo ti provoca questa stanza?»</li>
+          <li>«Come si manifesta il Bleed?»</li>
+          <li>«Chi o cosa non sei disposto a lasciare andare?»</li>
+        </ul>
+      </section>
+      <section class="rules-section wide">
+        <h2>07 · Lanciadadi rapido</h2>
+        <div class="dice">
+          <span style="display: inline-flex; width: 20%; gap: 8px;">
+            <label style="width: 100%;">Numero d6</label>
+            <input id="n" type="number" min="0" max="12" value="2">
+          </span>
+          <span>
+            <input id="zero" type="checkbox"> Azione a 0 (2d6, minimo)
+          </span>
+          <button class="action primary" id="roll">Lancia</button>
+        </div>
+        <p class="result" id="out" aria-live="polite">Pronto.</p><small>Strumento di supporto: imposta il numero totale
+          dei dadi dopo i bonus; l'opzione «azione a 0» usa la regola del risultato minore.</small>
+      </section>
+      <section class="rules-section wide">
+        <h2>08 · Checklist prima della scena</h2>
+        <details open>
+          <summary>Prima del tiro</summary>
+          <p>Qual è l'intento? Quale azione viene usata? Che cosa può andare storto? Quanto è grave la conseguenza?</p>
+        </details>
+        <details open>
+          <summary>Dopo il tiro</summary>
+          <p>Descrivi il risultato nella fiction. Applica costi e conseguenze, valuta la resistenza, mostra come cambia
+            la situazione e restituisci la parola ai giocatori.</p>
+        </details>
+        <details open>
+          <summary>Quando la scena rallenta</summary>
+          <p>Introduci una traccia concreta, fai parlare la casa attraverso un ricordo, sposta un PNG o mostra che il
+            pericolo è avanzato.</p>
+        </details>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>

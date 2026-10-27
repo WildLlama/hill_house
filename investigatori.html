@@ -1,162 +1,124 @@
 <!doctype html>
 <html lang="it">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Hill House | Archivio del Circolo</title>
-    <script src="./script/players.js"></script>
-    <link href="./style/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <main>
-      <header>
-        <div class="eyebrow">Hill House - La casa che non lascia andare</div>
-        <h1>Achivio del Circolo</h1>
-        <div class="subtitle">Investigatori, documenti e appunti del Game Master</div>
-        <nav>
-          <a href="./index.html"><span>Schermo del Game Master</span></a>
-          <span> · </span>
-          <a href="./investigatori.html"><span>Investigatori</span></a>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hill House | Archivio del Circolo</title>
+  <script src="./script/players.js"></script>
+  <link href="./style/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Hill House - La casa che non lascia andare</div>
+      <h1>Achivio del Circolo</h1>
+      <div class="subtitle">Investigatori, documenti e appunti del Game Master</div>
+      <nav>
+        <a href="./index.html"><span>Schermo del Game Master</span></a>
+        <span> · </span>
+        <a href="./investigatori.html"><span>Investigatori</span></a>
         <span> · </span>
         <a href="./storia.html"><span>Storia</span></a>
-        </nav>        
-      </header>
-      <div class="sticky" id="saveStatus">Archivio locale pronto</div>
+        <span> · </span>
+        <a href="./regole.html"><span>Regole</span></a>
+      </nav>
+    </header>
+    <div class="sticky" id="saveStatus">Archivio locale pronto</div>
 
-      <div class="toolbar">
-        <button class="action" id="export">Esporta archivio JSON</button>
-        <button class="action alt" id="importBtn">Importa archivio JSON</button>
-        <input
-          id="importFile"
-          class="hidden"
-          type="file"
-          accept=".json,application/json"
-        />
-        <button class="action alt" id="print">Stampa / Salva PDF</button>
-        <button class="action danger" id="reset">Cancella archivio</button>
+    <div class="toolbar">
+      <button class="action" id="export">Esporta archivio JSON</button>
+      <button class="action alt" id="importBtn">Importa archivio JSON</button>
+      <input id="importFile" class="hidden" type="file" accept=".json,application/json" />
+      <button class="action alt" id="print">Stampa / Salva PDF</button>
+      <button class="action danger" id="reset">Cancella archivio</button>
+    </div>
+    <div class="hint small">
+
+    </div>
+    <section class="card" id="notes">
+      <h2>Diario del Game Master</h2>
+      <div class="cols">
+        <div>
+          <label for="session">Sessione / Data</label>
+          <input type="text" id="session" placeholder="Es. Halloween — 31 ottobre" />
+          <label for="general">Note generali</label>
+          <textarea id="general" rows="10" placeholder="Atmosfera, eventi, decisioni, promemoria..."></textarea>
+        </div>
+        <div>
+          <label for="clues">Indizi emersi</label>
+          <textarea id="clues" rows="5"
+            placeholder="Quali rivelazioni hanno già ottenuto gli investigatori?"></textarea>
+          <label for="secrets">Segreti e conseguenze</label>
+          <textarea id="secrets" rows="5" placeholder="Orologio, promesse alla Madre, conseguenze future..."></textarea>
+        </div>
       </div>
-      <div class="hint small">
-      
+      <p class="status" id="notesStatus">
+        Salvataggio automatico durante la scrittura.
+      </p>
+    </section>
+    <section class="card">
+      <div class="row" style="justify-content: space-between">
+        <h2>Investigatori</h2>
+        <button class="action primary" id="newChar">+ Nuovo investigatore</button>
       </div>
-      <section class="card" id="notes">
-        <h2>Diario del Game Master</h2>
-        <div class="cols">
-          <div>
-            <label for="session">Sessione / Data</label>
-            <input
-              type="text"
-              id="session"
-              placeholder="Es. Halloween — 31 ottobre"
-            />
-            <label for="general">Note generali</label>
-            <textarea
-              id="general"
-              rows="10"
-              placeholder="Atmosfera, eventi, decisioni, promemoria..."
-            ></textarea>
-          </div>
-          <div>
-            <label for="clues">Indizi emersi</label>
-            <textarea
-              id="clues"
-              rows="5"
-              placeholder="Quali rivelazioni hanno già ottenuto gli investigatori?"
-            ></textarea>
-            <label for="secrets">Segreti e conseguenze</label>
-            <textarea
-              id="secrets"
-              rows="5"
-              placeholder="Orologio, promesse alla Madre, conseguenze future..."
-            ></textarea>
-          </div>
+      <p class="small">
+        Crea schede manualmente, allega schede personaggio in PDF o immagini,
+        oppure importa un archivio JSON esportato da questa pagina.
+      </p>
+      <div class="cards" id="cards"></div>
+      <p id="empty" class="small">Nessun investigatore registrato.</p>
+    </section>
+    <section class="card hidden" id="editor">
+      <div class="row" style="justify-content: space-between">
+        <h2 id="editorTitle">Scheda investigatore</h2>
+        <button class="action alt" id="closeEditor">Chiudi scheda</button>
+      </div>
+      <div class="cols">
+        <div>
+          <label for="name">Nome investigatore</label>
+          <input type="text" id="name" />
+          <label for="player">Giocatore</label>
+          <input type="text" id="player" />
+          <label for="role">Ruolo / Specialità</label>
+          <input type="text" id="role" placeholder="Es. Studioso / Occultista" />
+          <label for="circle">Circolo / Affiliazione</label>
+          <input type="text" id="circle" />
+          <label for="drive">Motivazioni e legami</label>
+          <textarea id="drive" rows="4"></textarea>
         </div>
-        <p class="status" id="notesStatus">
-          Salvataggio automatico durante la scrittura.
-        </p>
-      </section>
-      <section class="card">
-        <div class="row" style="justify-content: space-between">
-          <h2>Investigatori</h2>
-          <button class="action primary" id="newChar">+ Nuovo investigatore</button>
+        <div>
+          <label for="unresolved">Situazione irrisolta</label>
+          <textarea id="unresolved" rows="4"
+            placeholder="Quale vicenda del passato non ha ancora trovato una conclusione?"></textarea>
+          <label for="happyMemories">Ricordi felici</label>
+          <textarea id="happyMemories" rows="4"
+            placeholder="Persone, luoghi e momenti che la Casa potrebbe evocare..."></textarea>
+          <label for="marks">Marchi e condizioni</label>
+          <textarea id="marks" rows="3" placeholder="Corpo, Cervello, Sanguinamento..."></textarea>
+          <label for="stats">Tratti, abilità, risorse</label>
+          <textarea id="stats" rows="4" placeholder="Annotazioni libere sulla scheda Candela Obscura"></textarea>
+          <label for="charNotes">Note segrete del GM</label>
+          <textarea id="charNotes" rows="4"
+            placeholder="Ricordi infantili, manifestazioni, legame con la Madre..."></textarea>
         </div>
-        <p class="small">
-          Crea schede manualmente, allega schede personaggio in PDF o immagini,
-          oppure importa un archivio JSON esportato da questa pagina.
-        </p>
-        <div class="cards" id="cards"></div>
-        <p id="empty" class="small">Nessun investigatore registrato.</p>
-      </section>
-      <section class="card hidden" id="editor">
-        <div class="row" style="justify-content: space-between">
-          <h2 id="editorTitle">Scheda investigatore</h2>
-          <button class="action alt" id="closeEditor">Chiudi scheda</button>
-        </div>
-        <div class="cols">
-          <div>
-            <label for="name">Nome investigatore</label>
-            <input type="text" id="name" />
-            <label for="player">Giocatore</label>
-            <input type="text" id="player" />
-            <label for="role">Ruolo / Specialità</label>
-            <input type="text" id="role" placeholder="Es. Studioso / Occultista" />
-            <label
-              for="circle"
-              >Circolo / Affiliazione</label>
-            <input type="text" id="circle" />
-            <label for="drive">Motivazioni e legami</label>
-            <textarea id="drive" rows="4"></textarea>
-          </div>
-          <div>
-            <label for="unresolved">Situazione irrisolta</label>
-            <textarea
-              id="unresolved"
-              rows="4"
-              placeholder="Quale vicenda del passato non ha ancora trovato una conclusione?"
-            ></textarea>
-            <label for="happyMemories">Ricordi felici</label>
-            <textarea
-              id="happyMemories"
-              rows="4"
-              placeholder="Persone, luoghi e momenti che la Casa potrebbe evocare..."
-            ></textarea>
-            <label for="marks">Marchi e condizioni</label>
-            <textarea
-              id="marks"
-              rows="3"
-              placeholder="Corpo, Cervello, Sanguinamento..."
-            ></textarea>
-            <label for="stats">Tratti, abilità, risorse</label>
-            <textarea
-              id="stats"
-              rows="4"
-              placeholder="Annotazioni libere sulla scheda Candela Obscura"
-            ></textarea>
-            <label for="charNotes">Note segrete del GM</label>
-            <textarea
-              id="charNotes"
-              rows="4"
-              placeholder="Ricordi infantili, manifestazioni, legame con la Madre..."
-            ></textarea>
-          </div>
-        </div>
-        <div class="sectionline"></div>
-        <h3>Allegati dell'investigatore</h3>
-        <p class="small">
-          PDF, immagini, file di testo e JSON. I file sono incorporati
-          nell'archivio locale e possono essere aperti o scaricati in seguito.
-        </p>
-        <input
-          id="attachments"
-          type="file"
-          multiple
-          accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.json,application/pdf,image/*,text/plain,application/json"
-        />
-        <div id="fileList"></div>
-        <div class="actions" style="margin-top: 20px">
-          <button class="action primary" id="saveChar">Salva investigatore</button>
-          <button class="action danger" id="deleteChar">Elimina investigatore</button>
-        </div>
-      </section>
-    </main>
-  </body>
+      </div>
+      <div class="sectionline"></div>
+      <h3>Allegati dell'investigatore</h3>
+      <p class="small">
+        PDF, immagini, file di testo e JSON. I file sono incorporati
+        nell'archivio locale e possono essere aperti o scaricati in seguito.
+      </p>
+      <input id="attachments" type="file" multiple
+        accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.json,application/pdf,image/*,text/plain,application/json" />
+      <div id="fileList"></div>
+      <div class="actions" style="margin-top: 20px">
+        <button class="action primary" id="saveChar">Salva investigatore</button>
+        <button class="action danger" id="deleteChar">Elimina investigatore</button>
+      </div>
+    </section>
+  </main>
+</body>
+
 </html>

@@ -1,5 +1,5 @@
 :root {
-color-scheme: dark;
+  color-scheme: dark;
   --accent: #29202a;
   --bg: #111216;
   --panel: #1d1e24;
@@ -21,6 +21,9 @@ color-scheme: dark;
   --dangerHover: #b96a72;
   --dangerText: #eee6dd;
   --charBg: #111216;
+  --blue: #2d69d8;
+  --orange: #d87a2d;
+  --green: #63d82d;
 }
 * {
   box-sizing: border-box;
@@ -28,7 +31,11 @@ color-scheme: dark;
 body {
   min-height: 100vh;
   margin: 0;
-  background: radial-gradient(ellipse at 80% 0%,  var(--accent) 0%, var(--bg) 48%);
+  background: radial-gradient(
+    ellipse at 80% 0%,
+    var(--accent) 0%,
+    var(--bg) 48%
+  );
   color: var(--ink);
   font:
     15px/1.55 system-ui,
@@ -262,10 +269,7 @@ summary {
   justify-content: flex-start;
   align-items: center;
 }
-.check input {
-  accent-color: #bd737d;
-  margin-top: 5px;
-}
+
 .tiny {
   font-size: 12px;
   color: var(--muted);
@@ -338,8 +342,6 @@ summary {
   }
 }
 
-
-
 .toolbar,
 .actions,
 .row {
@@ -385,10 +387,9 @@ label {
 .check label {
   all: inherit;
   margin: 0;
-
 }
-input[type="text"],
-input[type="file"],
+
+input,
 textarea,
 select {
   background: var(--bg);
@@ -405,13 +406,21 @@ textarea {
   resize: vertical;
   min-height: 110px;
 }
-input[type="text"]:focus,
-input[type="file"]:focus,
+
+input:focus,
 textarea:focus,
 select:focus {
   outline: 2px solid var(--gold);
   outline-offset: 1px;
 }
+
+input[type="check"],
+input[type="check"]:focus,
+input[type="checkbox"],
+input[type="checkbox"]:focus {
+  all: revert;
+}
+
 button.danger {
   border-color: var(--dangerBorder);
   color: var(--dangerText);
@@ -423,12 +432,10 @@ button.danger:hover {
 
 .inline-flex {
   display: inline-flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-
-
 
 /*
 button,
@@ -462,7 +469,7 @@ button:disabled {
 }
   */
 
-  .small {
+.small {
   font:
     12px/1.5 Arial,
     sans-serif;
@@ -504,7 +511,6 @@ button:disabled {
     sans-serif;
 }
 
-
 header.hero {
   position: relative;
   min-height: 520px;
@@ -534,8 +540,6 @@ header.hero {
   padding: 60px 20px;
   max-width: 900px;
 }
-
-
 
 .chapters {
   position: sticky;
@@ -608,7 +612,7 @@ blockquote {
   text-transform: uppercase;
 }
 .grid-content {
-    max-width: 1100px;
+  max-width: 1100px;
   margin: auto;
   display: grid;
   grid-template-columns: 235px minmax(0, 1fr);
@@ -616,21 +620,23 @@ blockquote {
   padding: 40px 25px 100px;
 }
 footer.toolbar {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 20;
-    display: flex;
-    gap: 7px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 20;
+  display: flex;
+  gap: 7px;
 }
 footer.toolbar button {
-    background: var(--panel);
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 16px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font: 13px Arial, sans-serif;
+  background: var(--panel);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 16px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font:
+    13px Arial,
+    sans-serif;
 }
 .tag {
   display: inline-block;
@@ -660,7 +666,7 @@ th {
 }
 
 .section {
-  padding: 20px;   
+  padding: 20px;
   border-bottom: 2px solid var(--gold);
 }
 .section h3 {
@@ -669,4 +675,97 @@ th {
 }
 .section p {
   font-size: 15px;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
+}
+
+p,
+ul {
+  margin: 8px 0;
+}
+
+li {
+  margin: 5px 0;
+}
+
+strong.gold {
+  color: var(--gold);
+}
+
+.wide {
+  grid-column: 1/-1;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid #8b7654;
+  border-radius: 20px;
+  padding: 2px 9px;
+  margin: 3px;
+  font-size: 13px;
+  color: var(--gold);
+}
+
+.dice {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rules-section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 20px;
+}
+
+.rules-section h2 {
+  font-size: 20px;
+  color: var(--gold);
+  margin: 0 0 12px;
+}
+
+.rules-section h3 {
+  color: var(--gold);
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.check input {
+  accent-color: #bd737d;
+  margin-top: 5px;
+}
+
+.result {
+  font-size: 20px;
+  min-height: 36px;
+}
+
+.result > .dado {
+  font-weight: bold;
+}
+.result > .min {
+  font-weight: bold;
+  color: var(--blu);
+}
+.result > .low {
+  font-weight: bold;
+  color: var(--red);
+}
+.result > .med {
+  font-weight: bold;
+  color: var(--orange);
+}
+.result > .high {
+  font-weight: bold;
+  color: var(--green);
+}
+.result > .crit {
+  font-weight: bold;
+  color: var(--gold);
 }

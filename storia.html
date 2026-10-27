@@ -1,504 +1,34 @@
 <!doctype html>
 <html lang="it">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="color-scheme" content="dark light" />
-    <title>Hill House — La casa che non sa lasciar andare</title>
-    <style>
-      :root {
-  --bg: #111315;
-  --paper: #1b1d20;
-  --panel: #242529;
-  --ink: #eee5d8;
-  --muted: #b6a99b;
-  --gold: #c9a66b;
-  --red: #963b44;
-  --line: #49403b;
-}
-* {
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font:
-    17px/1.75 Georgia,
-    "Times New Roman",
-    serif;
-}
-body:before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.13;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
-}
-header.hero {
-  position: relative;
-  min-height: 520px;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  overflow: hidden;
-  border-bottom: 1px solid var(--gold);
-}
-.hero svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hero:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(transparent 20%, #111315 98%);
-}
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 60px 20px;
-  max-width: 900px;
-}
-h1,
-h2,
-h3 {
-  font-weight: normal;
-  line-height: 1.18;
-}
-h1 {
-  font-size: clamp(45px, 7vw, 94px);
-  letter-spacing: 0.09em;
-  margin: 10px 0;
-  text-transform: uppercase;
-}
-h2 {
-  font-size: clamp(29px, 4vw, 43px);
-  color: var(--gold);
-  margin: 55px 0 18px;
-}
-h3 {
-  font-size: 26px;
-  color: #e3c79d;
-  margin: 30px 0 10px;
-}
-.eyebrow {
-  font:
-    12px/1.5 Arial,
-    sans-serif;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-.subtitle {
-  font-style: italic;
-  font-size: 23px;
-  color: #ded0bd;
-}
-main {
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 235px minmax(0, 1fr);
-  gap: 44px;
-  padding: 40px 25px 100px;
-}
-nav {
-  position: sticky;
-  top: 18px;
-  align-self: start;
-  max-height: 94vh;
-  overflow: auto;
-  border-left: 1px solid var(--line);
-  padding: 10px 0 15px 17px;
-  font:
-    13px/1.5 Arial,
-    sans-serif;
-}
-nav a {
-  display: block;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 7px 0;
-}
-nav a:hover {
-  color: var(--gold);
-}
-article {
-  min-width: 0;
-}
-.lead {
-  font-size: 23px;
-  line-height: 1.55;
-  color: #f1e2cc;
-}
-.section {
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 34px;
-}
-p {
-  margin: 14px 0;
-}
-strong {
-  color: #f5d7aa;
-}
-blockquote {
-  border-left: 3px solid var(--red);
-  background: #262124;
-  padding: 20px 25px;
-  margin: 25px 0;
-  color: #f2ded2;
-  font-size: 21px;
-  font-style: italic;
-}
-.note {
-  background: #272428;
-  border: 1px solid #66504b;
-  border-radius: 5px;
-  padding: 18px 22px;
-  margin: 22px 0;
-}
-.note b {
-  color: var(--gold);
-}
-.illustration {
-  margin: 30px 0;
-  border: 1px solid #51463f;
-  background: #121214;
-  overflow: hidden;
-}
-.illustration svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.illustration figcaption {
-  font:
-    12px/1.6 Arial,
-    sans-serif;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  padding: 10px 14px;
-  text-transform: uppercase;
-}
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-  margin: 25px 0;
-}
-.card {
-  padding: 20px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-top: 2px solid var(--gold);
-}
-.card h3 {
-  font-size: 22px;
-  margin: 0 0 10px;
-}
-.card p {
-  font-size: 15px;
-}
-.tag {
-  display: inline-block;
-  font:
-    11px Arial,
-    sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--gold);
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 15px;
-  margin: 20px 0;
-}
-td,
-th {
-  padding: 12px;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-  vertical-align: top;
-}
-th {
-  color: var(--gold);
-  font-family: Arial, sans-serif;
-}
-.clock {
-  background: #241f22;
-  border: 1px solid #71524f;
-  padding: 22px;
-  margin: 25px 0;
-}
-.segments {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 5px;
-}
-.segments button {
-  height: 42px;
-  border: 1px solid #66514d;
-  background: #383136;
-  cursor: pointer;
-}
-.segments button.on {
-  background: #983d45;
-}
-.clock button:focus-visible {
-  outline: 2px solid var(--gold);
-}
-.clock-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-top: 15px;
-  font:
-    14px Arial,
-    sans-serif;
-}
-.smallbutton {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--gold);
-  padding: 8px 13px;
-  cursor: pointer;
-}
-.steps {
-  counter-reset: step;
-}
-.step {
-  counter-increment: step;
-  padding: 15px 0 15px 55px;
-  position: relative;
-  border-bottom: 1px solid var(--line);
-}
-.step:before {
-  content: counter(step, upper-roman);
-  position: absolute;
-  left: 0;
-  top: 17px;
-  color: var(--gold);
-  font-size: 25px;
-}
-.ending {
-  padding: 24px;
-  margin: 18px 0;
-  border: 1px solid var(--line);
-  background: #242126;
-}
-.ending h3 {
-  margin-top: 0;
-}
-.ending:nth-of-type(3) {
-  border-color: var(--gold);
-}
-.check {
-  display: block;
-  margin: 12px 0;
-  font-size: 16px;
-}
-.check input {
-  accent-color: #b88959;
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-}
-.toolbar {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 20;
-  display: flex;
-  gap: 7px;
-}
-.toolbar button {
-  background: #3b2e2d;
-  color: #f3e3cc;
-  border: 1px solid var(--gold);
-  padding: 11px 15px;
-  cursor: pointer;
-  font:
-    13px Arial,
-    sans-serif;
-}
-footer {
-  text-align: center;
-  color: var(--muted);
-  padding: 45px 15px;
-  border-top: 1px solid var(--line);
-  font-size: 14px;
-}
-@media (max-width: 850px) {
-  main {
-    display: block;
-    padding: 20px 18px;
-  }
-  nav {
-    position: static;
-    max-height: none;
-    display: flex;
-    overflow: auto;
-    white-space: nowrap;
-    gap: 18px;
-    border-left: 0;
-    border-bottom: 1px solid var(--line);
-    padding: 10px 0;
-    margin-bottom: 20px;
-  }
-  nav a {
-    flex: none;
-  }
-  .hero {
-    min-height: 440px !important;
-  }
-}
-@media print {
-  body {
-    background: white;
-    color: #222;
-    font-size: 12px;
-  }
-  body:before,
-  nav,
-  .toolbar,
-  .clock-controls {
-    display: none !important;
-  }
-  main {
-    display: block;
-    max-width: none;
-    padding: 0 10mm;
-  }
-  header.hero {
-    min-height: 240px;
-    border: 0;
-  }
-  header.hero svg {
-    opacity: 0.25;
-  }
-  header.hero:after {
-    display: none;
-  }
-  h1 {
-    font-size: 40px;
-    color: #222;
-  }
-  h2 {
-    color: #64343b;
-    break-after: avoid;
-  }
-  .eyebrow,
-  .subtitle {
-    color: #555;
-  }
-  .section {
-    break-inside: auto;
-  }
-  .card,
-  .ending,
-  .note,
-  blockquote,
-  .clock {
-    background: #fafafa;
-    color: #222;
-    break-inside: avoid;
-  }
-  .card p,
-  .ending p {
-    color: #222;
-  }
-  strong {
-    color: #5a3030;
-  }
-  .illustration {
-    break-inside: avoid;
-  }
-  .illustration svg {
-    max-height: 230px;
-  }
-  .clock .segments button {
-    border: 1px solid #888;
-  }
-  .clock .segments button.on {
-    background: #888;
-  }
-  footer {
-    color: #555;
-  }
-}
 
-    </style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Hill House — La casa che non sa lasciar andare</title>
+  <link href="./style/style.css" rel="stylesheet" />
+</head>
 
-  </head>
-  <body>
-    <header class="hero">
-      <svg
-        viewBox="0 0 1000 440"
-        xmlns="http://www.w3.org/2000/svg"
-        role="img"
-        aria-label="Villa vittoriana tra gli alberi nella nebbia"
-      >
-        <defs>
-          <linearGradient id="sky" x2="0" y2="1">
-            <stop stop-color="#171923" />
-            <stop offset="1" stop-color="#4b4144" />
-          </linearGradient>
-          <radialGradient id="moon">
-            <stop stop-color="#eee1c1" stop-opacity=".8" />
-            <stop offset="1" stop-color="#eee1c1" stop-opacity="0" />
-          </radialGradient>
-        </defs>
-        <path fill="url(#sky)" d="M0 0h1000v440H0z" />
-        <circle cx="765" cy="92" r="130" fill="url(#moon)" />
-        <circle cx="765" cy="92" r="37" fill="#d7d0b6" opacity=".7" />
-        <path d="M0 350q250-90 500 0t500 0v90H0" fill="#26272a" />
-        <g fill="#16191d" stroke="#474044" stroke-width="4">
-          <path
-            d="M235 350V175l85-75 85 75v175zM405 350V135l95-85 95 85v215zM595 350V175l85-75 85 75v175z"
-          />
-          <path d="M325 350V205h350v145" />
-          <path d="M448 135V66h105v69" />
-        </g>
-        <g fill="#d5a26b" opacity=".75">
-          <path
-            d="M270 206h34v55h-34zM351 206h34v55h-34zM625 206h34v55h-34zM698 206h34v55h-34zM470 170h55v65h-55zM475 265h50v85h-50z"
-          />
-        </g>
-        <g fill="#101518">
-          <path
-            d="M0 0q100 75 90 270l-50 170H0zM1000 0q-100 75-90 270l50 170h40z"
-          />
-        </g>
-        <g stroke="#151719" stroke-width="14" fill="none">
-          <path d="M55 0q120 100 145 220M960 0Q820 80 780 210" />
-          <path d="M45 80l110 25M930 90l-100 25" />
-        </g>
-        <path
-          d="M0 380q220-45 440 0t560-10v70H0"
-          fill="#a5a19c"
-          opacity=".12"
-        />
-      </svg>
-      <div class="hero-inner">
-        <div class="eyebrow">
-          Candela Obscura · One-shot di Halloween · Guida del GM
-        </div>
-        <h1>Hill House</h1>
-        <div class="subtitle">La casa che non sa lasciar andare</div>
-      </div>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Hill House - La casa che non lascia andare</div>
+      <h1>Storia</h1>
+      <p class="quote">
+        «La Casa non vuole uccidere gli investigatori. Vuole amarli. E ha
+        imparato che amare significa non lasciare mai andare.»
+      </p>
+      <nav>
+        <a href="./index.html"><span>Schermo del Game Master</span></a>
+        <span> · </span>
+        <a href="./investigatori.html"><span>Investigatori</span></a>
+        <span> · </span>
+        <a href="./storia.html"><span>Storia</span></a>
+        <span> · </span>
+        <a href="./regole.html"><span>Regole</span></a>
+      </nav>
     </header>
-    <main>
+    <div class="grid-content">
       <nav aria-label="Indice" class="chapters">
         <div class="eyebrow">Indice</div>
         <a href="#premessa">Il cuore della storia</a>
@@ -509,7 +39,6 @@ footer {
         <a href="#arrivo">Bentornati a casa</a>
         <a href="#fantasmi">I volti della casa</a>
         <a href="#indizi">Tre segnali delle madri autentiche</a>
-        <a href="#orologio">Orologio segreto del GM</a>
         <a href="#struttura">Struttura in cinque atti</a>
         <a href="#stanza">La Stanza Rossa</a>
         <a href="#frattura">La madre che si libera</a>
@@ -520,29 +49,31 @@ footer {
         <section class="section" id="premessa">
           <h2>Il cuore della storia</h2>
           <p class="lead">
-            Gli investigatori non stanno entrando in una casa infestata. Stanno
-            tornando nel luogo in cui una parte di loro non ha mai smesso di
-            vivere.
+            Gli investigatori non stanno entrando in una casa infestata.
+            Stanno tornando nel luogo in cui una parte di loro non ha mai
+            smesso di vivere.
           </p>
           <p>
-            Hill House custodisce tre verità intrecciate: gli esperimenti sulla
-            coscienza di Elias Vale, il sacrificio della famiglia Craine e la
-            natura della Madre Vuota, che ha imparato che amare significa non
-            lasciare andare.
+            Hill House custodisce tre verità intrecciate: gli esperimenti
+            sulla coscienza di Elias Vale, il sacrificio della famiglia Craine
+            e la natura della Madre Vuota, che ha imparato che amare significa
+            non lasciare andare.
           </p>
           <div class="note">
             <b>Segreto del GM.</b> Gli investigatori sono i bambini
-            sopravvissuti agli esperimenti. Le loro madri biologiche sono morte
-            nella villa e le loro coscienze esistono ancora, fuse con la Madre.
+            sopravvissuti agli esperimenti. Le loro madri biologiche sono
+            morte nella villa e le loro coscienze esistono ancora, fuse con la
+            Madre.
           </div>
         </section>
         <section class="section" id="origine">
-          <h2>L’esperimento di Elias Vale</h2>
+          <h2>L'esperimento di Elias Vale</h2>
           <p>
             Il dottor Elias Vale acquistò la villa per studiare la persistenza
-            della coscienza dopo la morte. Usò bambini come soggetti principali
-            e le loro madri biologiche come sorgenti di emozioni, servendosi del
-            Bleed per registrare e conservare le impronte mentali.
+            della coscienza dopo la morte. Usò bambini come soggetti
+            principali e le loro madri biologiche come sorgenti di emozioni,
+            servendosi del Bleed per registrare e conservare le impronte
+            mentali.
           </p>
           <p>
             Quando una delle madri morì naturalmente, la sua voce e i suoi
@@ -555,7 +86,8 @@ footer {
             uccise le altre madri. Le coscienze dei bambini si frammentarono:
             una parte rimase nella casa, un'altra crebbe nel mondo esterno.
             Infine lo scienziato si murò vivo in cantina con diario, cartelle
-            cliniche e risultati, desiderando anch'egli sopravvivere per sempre.
+            cliniche e risultati, desiderando anch'egli sopravvivere per
+            sempre.
           </p>
           <blockquote>
             Non avevo vinto la morte. Le avevo soltanto insegnato a ricordare.
@@ -564,37 +96,7 @@ footer {
         <section class="section" id="madre">
           <h2>La Madre Vuota</h2>
           <figure class="illustration">
-            <svg
-              viewBox="0 0 900 350"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Sagome di tre madri che si fondono in un'unica figura"
-            >
-              <rect width="900" height="350" fill="#1c1b22" />
-              <g fill="#44333d" opacity=".8">
-                <ellipse cx="280" cy="160" rx="75" ry="105" />
-                <path d="M145 350q10-150 135-150t135 150" />
-                <ellipse cx="620" cy="160" rx="75" ry="105" />
-                <path d="M485 350q10-150 135-150t135 150" />
-              </g>
-              <g fill="#a27c79" opacity=".7">
-                <ellipse cx="450" cy="135" rx="77" ry="108" />
-                <path d="M290 350q12-155 160-155t160 155" />
-              </g>
-              <path
-                d="M435 140q15 12 30 0M421 116h12m35 0h12"
-                stroke="#292127"
-                stroke-width="4"
-                fill="none"
-              />
-              <path
-                d="M0 340q200-60 450 0t450 0"
-                fill="none"
-                stroke="#a35a5a"
-                opacity=".3"
-                stroke-width="18"
-              />
-            </svg>
+            <img src="./images/madre-vuota.jpg" alt="Volto di donna con occhi e bocca vuoti, circondato da mani" />
             <figcaption>
               Le coscienze delle madri non sono svanite: parlano attraverso un
               unico volto
@@ -602,10 +104,10 @@ footer {
           </figure>
           <p>
             Prima degli esperimenti, la Madre Vuota era una presenza del Bleed
-            capace di trattenere ciò che moriva nella villa. Le donne assorbite
-            le insegnarono il linguaggio dell'affetto, della paura e della
-            protezione. L'entità scambiò il timore di perdere un figlio con il
-            diritto di trattenerlo per sempre.
+            capace di trattenere ciò che moriva nella villa. Le donne
+            assorbite le insegnarono il linguaggio dell'affetto, della paura e
+            della protezione. L'entità scambiò il timore di perdere un figlio
+            con il diritto di trattenerlo per sempre.
           </p>
           <h3>Le tre leggi</h3>
           <p>
@@ -628,6 +130,12 @@ footer {
         </section>
         <section class="section" id="craine">
           <h2>Il sacrificio della famiglia Craine</h2>
+          <figure class="illustration">
+            <img src="./images/famiglia-craine.jpg" alt="Foto della famiglia Craine" />
+            <figcaption>
+              Figli / Investigatori Craine
+            </figcaption>
+          </figure>
           <p>
             La Candela Obscura inviò la famiglia Craine a indagare
             sull'anomalia. La spedizione scoprì che la Stanza Rossa era il
@@ -636,8 +144,8 @@ footer {
           </p>
           <p>
             Per contenere la Madre, i Craine sacrificarono la propria libertà:
-            alcune coscienze sono tuttora impegnate nel sigillo. Olivia è morta
-            e assorbita; la Madre usa il suo volto come maschera. Nelly
+            alcune coscienze sono tuttora impegnate nel sigillo. Olivia è
+            morta e assorbita; la Madre usa il suo volto come maschera. Nelly
             sopravvive come fantasma frammentato.
           </p>
           <table>
@@ -666,8 +174,8 @@ footer {
         <section class="section" id="incarico">
           <h2>Tre scomparsi in dieci giorni</h2>
           <p>
-            La Candela manda gli investigatori a Hill House per indagare su tre
-            sparizioni recenti, non sulla spedizione Craine. Gli archivi
+            La Candela manda gli investigatori a Hill House per indagare su
+            tre sparizioni recenti, non sulla spedizione Craine. Gli archivi
             ufficiali descrivono la villa come disabitata. Il Lightkeeper
             conosce invece l'identità dei personaggi: fu coinvolto nel loro
             salvataggio da bambini.
@@ -695,70 +203,24 @@ footer {
             </tr>
           </table>
           <p>
-            Uno dei tre può essere ancora vivo in un ricordo felice; un altro è
-            morto e preservato; il terzo è stato usato per indebolire il
+            Uno dei tre può essere ancora vivo in un ricordo felice; un altro
+            è morto e preservato; il terzo è stato usato per indebolire il
             sigillo.
           </p>
         </section>
         <section class="section" id="arrivo">
           <h2>Bentornati a casa</h2>
           <figure class="illustration">
-            <svg
-              viewBox="0 0 1000 440"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Villa vittoriana tra gli alberi nella nebbia"
-            >
-              <defs>
-                <linearGradient id="sky" x2="0" y2="1">
-                  <stop stop-color="#171923" />
-                  <stop offset="1" stop-color="#4b4144" />
-                </linearGradient>
-                <radialGradient id="moon">
-                  <stop stop-color="#eee1c1" stop-opacity=".8" />
-                  <stop offset="1" stop-color="#eee1c1" stop-opacity="0" />
-                </radialGradient>
-              </defs>
-              <path fill="url(#sky)" d="M0 0h1000v440H0z" />
-              <circle cx="765" cy="92" r="130" fill="url(#moon)" />
-              <circle cx="765" cy="92" r="37" fill="#d7d0b6" opacity=".7" />
-              <path d="M0 350q250-90 500 0t500 0v90H0" fill="#26272a" />
-              <g fill="#16191d" stroke="#474044" stroke-width="4">
-                <path
-                  d="M235 350V175l85-75 85 75v175zM405 350V135l95-85 95 85v215zM595 350V175l85-75 85 75v175z"
-                />
-                <path d="M325 350V205h350v145" />
-                <path d="M448 135V66h105v69" />
-              </g>
-              <g fill="#d5a26b" opacity=".75">
-                <path
-                  d="M270 206h34v55h-34zM351 206h34v55h-34zM625 206h34v55h-34zM698 206h34v55h-34zM470 170h55v65h-55zM475 265h50v85h-50z"
-                />
-              </g>
-              <g fill="#101518">
-                <path
-                  d="M0 0q100 75 90 270l-50 170H0zM1000 0q-100 75-90 270l50 170h40z"
-                />
-              </g>
-              <g stroke="#151719" stroke-width="14" fill="none">
-                <path d="M55 0q120 100 145 220M960 0Q820 80 780 210" />
-                <path d="M45 80l110 25M930 90l-100 25" />
-              </g>
-              <path
-                d="M0 380q220-45 440 0t560-10v70H0"
-                fill="#a5a19c"
-                opacity=".12"
-              />
-            </svg>
+            <img src="./images/hill-house-esterno.jpg" alt="Villa vittoriana con giardino e cancello" />
             <figcaption>
               Hill House, una casa impossibilmente accogliente
             </figcaption>
           </figure>
           <p>
             Il giardino è curato, le finestre brillano, il portone è lucidato.
-            Attraversando il cancello, tutti provano la nostalgia di un ritorno
-            a casa. Una prova di <strong>Sense</strong> riuscita rivela che la
-            familiarità viene indotta dall'esterno.
+            Attraversando il cancello, tutti provano la nostalgia di un
+            ritorno a casa. Una prova di <strong>Sense</strong> riuscita
+            rivela che la familiarità viene indotta dall'esterno.
           </p>
           <blockquote>
             Non conoscete questo posto. Eppure una parte di voi sa esattamente
@@ -766,31 +228,32 @@ footer {
           </blockquote>
           <h3>Whitcomb, il maggiordomo</h3>
           <p>
-            Accoglie gli investigatori senza chiedere i nomi e serve tè o caffè
-            esattamente come lo preferiscono. «Certi dettagli, in una famiglia,
-            non si dimenticano.»
+            Accoglie gli investigatori senza chiedere i nomi e serve tè o
+            caffè esattamente come lo preferiscono. «Certi dettagli, in una
+            famiglia, non si dimenticano.»
           </p>
           <p>
-            Bere concede un <strong>dado dorato speciale</strong> per una futura
-            prova (regola della one-shot) e richiede Sense. In caso di successo,
-            una pace innaturale nasconde il pericolo; in caso di fallimento,
-            appare la visione di una ragazza che si getta dal cornicione con una
-            corda al collo. In entrambi i casi, bere incrementa l'orologio
-            nascosto.
+            Bere concede un <strong>dado dorato speciale</strong> per una
+            futura prova (regola della one-shot) e richiede Sense. In caso di
+            successo, una pace innaturale nasconde il pericolo; in caso di
+            fallimento, appare la visione di una ragazza che si getta dal
+            cornicione con una corda al collo. In entrambi i casi, bere
+            incrementa l'orologio nascosto.
           </p>
           <h3>Olivia Craine</h3>
           <p>
             Whitcomb li accompagna da Olivia, affabile e materna. Racconta che
             Vale tentò di curare bambini malati e che le madri parteciparono
-            volontariamente; sostiene che gli altri Craine lasciarono la Candela
-            e che lei rimase a sorvegliare il Bleed.
+            volontariamente; sostiene che gli altri Craine lasciarono la
+            Candela e che lei rimase a sorvegliare il Bleed.
           </p>
           <blockquote>
             Mi hanno chiesto di dimenticare. E io li ho amati abbastanza da
             farlo.
           </blockquote>
           <p>
-            La sua testimonianza intreccia dettagli veri e menzogne della Madre.
+            La sua testimonianza intreccia dettagli veri e menzogne della
+            Madre.
           </p>
         </section>
         <section class="section" id="fantasmi">
@@ -799,11 +262,14 @@ footer {
             <div class="card">
               <span class="tag">Il ricordo</span>
               <h3>Nelly Craine</h3>
+              <figure class="illustration">
+                <img src="./images/nelly-craine.jpg" alt="Primo piano di Nelly Craine adulta" />
+              </figure>
               <p>
                 Ricorda di aver sempre vissuto qui. Teme la donna dal collo
-                storto, riconosce con reverenza il Lightkeeper e ha nascosto un
-                distintivo della Candela nella stanza dei giochi, sua versione
-                della Stanza Rossa.
+                storto, riconosce con reverenza il Lightkeeper e ha nascosto
+                un distintivo della Candela nella stanza dei giochi, sua
+                versione della Stanza Rossa.
               </p>
             </div>
             <div class="card">
@@ -812,17 +278,22 @@ footer {
               <p>
                 È il momento della morte di Nelly, preservato come apparizione
                 autonoma. Compare ai piedi di un letto: con Sense riuscito
-                mostra l'apertura della Stanza Rossa senza rivelarne l'interno;
-                con fallimento provoca un urlo e incrementa l'orologio.
+                mostra l'apertura della Stanza Rossa senza rivelarne
+                l'interno; con fallimento provoca un urlo e incrementa
+                l'orologio.
               </p>
             </div>
             <div class="card">
               <span class="tag">La colpa</span>
               <h3>Elias Vale</h3>
+              <figure class="illustration">
+                <img src="./images/elias-harrow.jpg" alt="Primo piano di Elias Harrow adulto" />
+              </figure>
               <p>
-                Chiama gli investigatori con i nomi d'infanzia e li tratta come
-                bambini. Di notte gratta dentro le pareti. Il suo cadavere
-                murato in cantina custodisce le prove degli esperimenti.
+                Chiama gli investigatori con i nomi d'infanzia e li tratta
+                come bambini. Di notte gratta dentro le pareti. Il suo
+                cadavere murato in cantina custodisce le prove degli
+                esperimenti.
               </p>
             </div>
             <div class="card">
@@ -830,8 +301,8 @@ footer {
               <h3>Madre Vuota</h3>
               <p>
                 Prima appare come Olivia, poi con il volto delle madri
-                biologiche. Non desidera uccidere i figli: vuole che restino per
-                sempre.
+                biologiche. Non desidera uccidere i figli: vuole che restino
+                per sempre.
               </p>
             </div>
           </div>
@@ -843,60 +314,33 @@ footer {
               <h3>Il tè</h3>
               <p>
                 Una voce femminile pronuncia il nome infantile di un
-                personaggio; un'altra, più profonda, lo invita a bere. La prima
-                tentava di avvertirlo.
+                personaggio; un'altra, più profonda, lo invita a bere. La
+                prima tentava di avvertirlo.
               </p>
             </div>
             <div class="step">
               <h3>L'oggetto d'infanzia</h3>
               <p>
-                Un giocattolo o una scatola musicale mostra un ricordo reale. La
-                madre nel ricordo guarda il figlio ormai adulto: «Non ascoltare
-                quando parla con la mia voce».
+                Un giocattolo o una scatola musicale mostra un ricordo reale.
+                La madre nel ricordo guarda il figlio ormai adulto: «Non
+                ascoltare quando parla con la mia voce».
               </p>
             </div>
             <div class="step">
               <h3>Lo specchio</h3>
               <p>
                 Una donna appare riflessa, cerca di parlare e scrive sul vetro
-                appannato: «VATTENE». Olivia compare sulla soglia e invita a non
-                fidarsi delle voci.
+                appannato: «VATTENE». Olivia compare sulla soglia e invita a
+                non fidarsi delle voci.
               </p>
             </div>
           </div>
           <div class="note">
             <b>Principio di conduzione:</b> questi segnali devono essere
             interpretabili come resistenza interna alla Madre, non come
-            spiegazioni esplicite. La conclusione di Vale, secondo cui le donne
-            sarebbero scomparse, deve poter essere smentita dai fatti.
+            spiegazioni esplicite. La conclusione di Vale, secondo cui le
+            donne sarebbero scomparse, deve poter essere smentita dai fatti.
           </div>
-        </section>
-        <section class="section" id="orologio">
-          <h2>Orologio segreto del GM</h2>
-          <p>
-            Accettare volontariamente l'ospitalità della casa incrementa il
-            Richiamo: bere, dormire in un letto preparato, accettare un
-            abbraccio, promettere di tornare o fidarsi di un ricordo
-            rassicurante. Non ogni fallimento deve farlo avanzare.
-          </p>
-          <div class="clock">
-            <div class="eyebrow">Il richiamo della Madre</div>
-            <div class="segments" id="segments"></div>
-            <div class="clock-controls">
-              <button class="smallbutton" onclick="changeClock(-1)">
-                − Riduci</button
-              ><span id="clockLabel" aria-live="polite">0 / 8</span
-              ><button class="smallbutton" onclick="changeClock(1)">
-                + Incrementa
-              </button>
-            </div>
-            <p id="clockDesc"></p>
-          </div>
-          <p>
-            A 8 segmenti, la Madre può aprire la Stanza Rossa e tentare di
-            sostituire i Craine. La scelta finale rimane comunque nelle mani dei
-            giocatori.
-          </p>
         </section>
         <section class="section" id="struttura">
           <h2>Struttura in cinque atti</h2>
@@ -911,22 +355,22 @@ footer {
             <div class="step">
               <h3>Le stanze dei ricordi — 55 min</h3>
               <p>
-                Esplorazione, Nelly, distintivo della Candela, contraddizioni e
-                tracce degli scomparsi.
+                Esplorazione, Nelly, distintivo della Candela, contraddizioni
+                e tracce degli scomparsi.
               </p>
             </div>
             <div class="step">
               <h3>La notte che non finisce — 45 min</h3>
               <p>
-                Donna dal collo storto, rumori nelle pareti, sogni e rivelazione
-                dell'infanzia nella villa.
+                Donna dal collo storto, rumori nelle pareti, sogni e
+                rivelazione dell'infanzia nella villa.
               </p>
             </div>
             <div class="step">
               <h3>Ciò che è stato sepolto — 55 min</h3>
               <p>
-                Cantina, diario di Vale, cartelle cliniche, verità sul massacro
-                e sul sigillo Craine.
+                Cantina, diario di Vale, cartelle cliniche, verità sul
+                massacro e sul sigillo Craine.
               </p>
             </div>
             <div class="step">
@@ -939,57 +383,22 @@ footer {
           </div>
           <p>
             La Stanza Rossa può essere aperta anche in anticipo: in quel caso
-            mostra una versione incompleta e rassicurante di sé, senza impedire
-            l'indagine.
+            mostra una versione incompleta e rassicurante di sé, senza
+            impedire l'indagine.
           </p>
         </section>
         <section class="section" id="stanza">
           <h2>La Stanza Rossa</h2>
           <figure class="illustration">
-            <svg
-              viewBox="0 0 900 400"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Porta rossa al fondo di un corridoio oscuro"
-            >
-              <defs>
-                <radialGradient id="r">
-                  <stop stop-color="#7d3039" />
-                  <stop offset="1" stop-color="#181416" />
-                </radialGradient>
-              </defs>
-              <rect width="900" height="400" fill="url(#r)" />
-              <path
-                d="M0 0L340 85V310L0 400M900 0L560 85V310L900 400"
-                fill="#25191d"
-                stroke="#503339"
-                stroke-width="4"
-              />
-              <path d="M340 85h220v225H340z" fill="#301c22" />
-              <path
-                d="M375 103h150v207H375z"
-                fill="#832f39"
-                stroke="#b17b67"
-                stroke-width="7"
-              />
-              <path
-                d="M395 120h110v174H395z"
-                fill="none"
-                stroke="#4c2027"
-                stroke-width="3"
-              />
-              <circle cx="490" cy="215" r="6" fill="#dbb17e" />
-              <path d="M0 400l340-90h220l340 90" fill="#161417" />
-              <path d="M450 310L280 400h340z" fill="#a34845" opacity=".2" />
-            </svg>
+            <img src="./images/stanza-rossa.jpg" alt="Interno di una stanza rossa con tre figure sedute al centro" />
             <figcaption>
               Il cuore dei ricordi, e il luogo del contenimento
             </figcaption>
           </figure>
           <p>
             Non è soltanto la prigione del potere della Madre: conserva i
-            momenti felici delle persone trattenute. Per Nelly è una stanza dei
-            giochi; per altri, una cameretta o un salotto. Quando gli
+            momenti felici delle persone trattenute. Per Nelly è una stanza
+            dei giochi; per altri, una cameretta o un salotto. Quando gli
             investigatori conoscono la verità, le versioni si sovrappongono.
           </p>
           <p>
@@ -1002,19 +411,20 @@ footer {
         <section class="section" id="frattura">
           <h2>La madre che si libera</h2>
           <p>
-            La liberazione non dipende da un singolo tiro: nasce da un gesto che
-            contraddice la logica della Madre. Un investigatore dice addio pur
-            desiderando restare, rinuncia a un ricordo per salvare qualcuno o
-            libera i Craine a costo di perdere per sempre la propria madre.
+            La liberazione non dipende da un singolo tiro: nasce da un gesto
+            che contraddice la logica della Madre. Un investigatore dice addio
+            pur desiderando restare, rinuncia a un ricordo per salvare
+            qualcuno o libera i Craine a costo di perdere per sempre la
+            propria madre.
           </p>
           <blockquote>
             Amore mio... Non è questo che volevo per te. Non devi restare.
             Nemmeno per me.
           </blockquote>
           <p>
-            Per pochi istanti la donna torna sé stessa. Rivela che le coscienze
-            non possono essere strappate all'entità senza rischiare di
-            distruggerle; tutte avevano inizialmente desiderato restare per
+            Per pochi istanti la donna torna sé stessa. Rivela che le
+            coscienze non possono essere strappate all'entità senza rischiare
+            di distruggerle; tutte avevano inizialmente desiderato restare per
             proteggere i figli e avevano così alimentato involontariamente la
             prigione.
           </p>
@@ -1034,10 +444,10 @@ footer {
           <h2>Il dilemma finale</h2>
           <p>
             La Madre mostra a ogni investigatore il volto della sua madre
-            biologica e offre di sostituire i Craine, promettendo una vita senza
-            separazioni. Quando una donna emerge per pochi istanti, rivela: «Non
-            potete strapparci da lei. Ormai siamo parte della stessa cosa. Ma
-            potete insegnarci a lasciarvi andare».
+            biologica e offre di sostituire i Craine, promettendo una vita
+            senza separazioni. Quando una donna emerge per pochi istanti,
+            rivela: «Non potete strapparci da lei. Ormai siamo parte della
+            stessa cosa. Ma potete insegnarci a lasciarvi andare».
           </p>
           <div class="ending">
             <h3>A — Restare</h3>
@@ -1059,30 +469,34 @@ footer {
             <h3>C — L'ultimo addio</h3>
             <p>
               Gli investigatori trasformano il legame senza distruggere la
-              Madre: rinunciano a qualcosa di autentico e restituiscono libertà
-              agli altri. I Craine possono andare, i vivi escono, le madri
-              rimangono parte dell'entità ma non sono più obbligate a trattenere
-              i figli. La casa sopravvive, cambiata e non necessariamente
-              innocua.
+              Madre: rinunciano a qualcosa di autentico e restituiscono
+              libertà agli altri. I Craine possono andare, i vivi escono, le
+              madri rimangono parte dell'entità ma non sono più obbligate a
+              trattenere i figli. La casa sopravvive, cambiata e non
+              necessariamente innocua.
             </p>
           </div>
           <h3>Tre verità da riconoscere</h3>
-          <label class="check"
-            ><input type="checkbox" /> Ricordare: accogliere un ricordo vero,
-            anche doloroso.</label
-          ><label class="check"
-            ><input type="checkbox" /> Rinunciare: perdere volontariamente
-            qualcosa di prezioso.</label
-          ><label class="check"
-            ><input type="checkbox" /> Lasciare andare: restituire concretamente
-            libertà a qualcuno.</label
-          >
+          <span class="check">
+            <input type="checkbox" />
+            Ricordare: accogliere un ricordo vero, anche doloroso.
+          </span>
+          <span class="check">
+            <input type="checkbox" />
+            Rinunciare: perdere volontariamente qualcosa di prezioso.
+          </span>
+          <span class="check">
+            <input type="checkbox" />
+            Lasciare andare: restituire concretamente libertà a qualcuno.
+          </span>
           <p>
             I tiri di Candela Obscura determinano costo e conseguenze, non
             annullano un gesto narrativo già compiuto. Non esiste un finale
             obbligatoriamente giusto.
           </p>
-          <blockquote>Andate, bambini miei. E vivete anche per noi.</blockquote>
+          <blockquote>
+            Andate, bambini miei. E vivete anche per noi.
+          </blockquote>
           <p>
             La porta non si richiude. Alla finestra, una figura alza la mano:
             non li richiama, li saluta.
@@ -1091,16 +505,17 @@ footer {
         <section class="section" id="appendice">
           <h2>Promemoria del GM</h2>
           <div class="note">
-            <b>Rivelazioni da non perdere:</b> i personaggi erano i bambini; le
-            madri furono uccise; le loro coscienze vivono ancora nella Madre; i
-            Craine mantengono il sigillo; la Madre confonde amore e possesso; il
-            Lightkeeper conosce il passato degli investigatori.
+            <b>Rivelazioni da non perdere:</b> i personaggi erano i bambini;
+            le madri furono uccise; le loro coscienze vivono ancora nella
+            Madre; i Craine mantengono il sigillo; la Madre confonde amore e
+            possesso; il Lightkeeper conosce il passato degli investigatori.
           </div>
           <div class="note">
             <b>Gestione dell'orrore:</b> privilegia ricordi, silenzi,
-            ripetizioni, familiarità innaturale e scelte irreversibili rispetto
-            ai combattimenti. Chiedi ai giocatori prima della sessione quali
-            temi legati a infanzia, lutto e famiglia preferiscono evitare.
+            ripetizioni, familiarità innaturale e scelte irreversibili
+            rispetto ai combattimenti. Chiedi ai giocatori prima della
+            sessione quali temi legati a infanzia, lutto e famiglia
+            preferiscono evitare.
           </div>
           <p>
             <strong>Tema:</strong> il vero antagonista non è la morte, ma
@@ -1108,16 +523,13 @@ footer {
           </p>
         </section>
       </article>
-    </main>
-    <footer>
-      HILL HOUSE · DOSSIER DEL GM · Documento HTML autonomo con illustrazioni
-      vettoriali incorporate
-    </footer>
-    <div class="toolbar">
-      <button onclick="window.print()">Stampa / PDF</button
-      ><button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-        ↑ Inizio
-      </button>
     </div>
-  </body>
+  </main>
+  <footer class="toolbar">
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      ↑ Inizio
+    </button>
+  </footer>
+</body>
+
 </html>
