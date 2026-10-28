@@ -577,7 +577,7 @@ blockquote {
   padding: 20px 25px;
   margin: 25px 0;
   color: #f2ded2;
-  font-size: 21px;
+  /* font-size: 21px; */
   font-style: italic;
 }
 .note {
