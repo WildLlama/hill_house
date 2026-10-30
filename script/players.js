@@ -90,7 +90,7 @@ window.onload = function () {
                       <div class="meta">${esc(c.player || "Giocatore non indicato")}</div>
                       <span class="pill">${esc(c.role || "Ruolo non indicato")}</span>
                       <div class="actions"><button class="action" data-id="${esc(c.id)}">Apri scheda</button></div>
-                      ${(c.redroom ? `<details style="margin-top: 16px;"><summary>Stanza Rossa</summary>${esc(c.redroom)}</details>` : "")}`;
+                      ${(c.redroom ? `<details class="redroom" style="margin-top: 16px;"><summary>Stanza Rossa</summary>${esc(c.redroom)}</details>` : "")}`;
       div.querySelector("button").onclick = () => edit(c.id);
       wrap.appendChild(div);
     }
@@ -361,4 +361,13 @@ window.onload = function () {
       data[k] = $(k).value;
     persist();
   });
+  $("expCompr").onclick = () => {
+
+    let currState = $("expCompr").getAttribute("open");
+    let nextState = !currState || (currState && currState == "false");
+    document.querySelectorAll("details.redroom").forEach(d => {
+      d.open = nextState;
+    });
+    $("expCompr").setAttribute("open", nextState);
+  };
 };

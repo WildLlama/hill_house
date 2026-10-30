@@ -44,9 +44,9 @@
         "role": "Braccio / Espolatore",
         "circle": "",
         "drive": "",
-        "redroom": "",
-        "unresolved": "",
-        "happyMemories": "",
+        "redroom": "Casa sull'albero con mappe del mondo, insetti catturati e bacheca delle farfalle\nIn un angolo una foto di lui e un altro bambino",
+        "unresolved": "Ha dovuto scegliere tra un compagno ferito e salvare la città di New Flaire optando per la seconda\nIl collega è scomparto e lui si sente in colpa anche se non è accusato di nulla",
+        "happyMemories": "Scherzi e avventure vissute insieme a questo compagno",
         "marks": "",
         "stats": "",
         "charNotes": ""
@@ -80,6 +80,21 @@
         "marks": "",
         "stats": "",
         "charNotes": "La bussola punta alla stanza rossa di Hill House"
+      },
+      {
+        "id": "3085b1d0-4e24-4a4b-a1a2-1d4eeb679bfb",
+        "name": "Dimitri Voronin",
+        "age": "34",
+        "player": "Daniel",
+        "role": "Arcano / Medium",
+        "circle": "",
+        "drive": "",
+        "redroom": "Vecchia stanza della musica con un pianoforte e un violoncello",
+        "unresolved": "Prematura scomparsa dei genitori che lo ha fatto avvicinare allo spiritismo, unico modo per essere in contatto con loro",
+        "happyMemories": "La nonna che lo ha cresciuto e le ha insegnato a suonare il violoncello, con il quale trova calma e serenità",
+        "marks": "",
+        "stats": "",
+        "charNotes": ""
       }
     ]
   },
