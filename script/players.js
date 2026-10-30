@@ -86,7 +86,11 @@ window.onload = function () {
     for (const c of data.characters) {
       let div = document.createElement("div");
       div.className = "char";
-      div.innerHTML = `<h3>${esc(c.name || "Senza nome")}</h3><div class="meta">${esc(c.player || "Giocatore non indicato")}</div><span class="pill">${esc(c.role || "Ruolo non indicato")}</span><div class="actions"><button class="action" data-id="${esc(c.id)}">Apri scheda</button></div>`;
+      div.innerHTML = `<h3>${esc(c.name || "Senza nome")}, ${esc(c.age || "")}</h3>
+                      <div class="meta">${esc(c.player || "Giocatore non indicato")}</div>
+                      <span class="pill">${esc(c.role || "Ruolo non indicato")}</span>
+                      <div class="actions"><button class="action" data-id="${esc(c.id)}">Apri scheda</button></div>
+                      ${(c.redroom ? `<details style="margin-top: 16px;"><summary>Stanza Rossa</summary>${esc(c.redroom)}</details>` : "")}`;
       div.querySelector("button").onclick = () => edit(c.id);
       wrap.appendChild(div);
     }
@@ -96,6 +100,7 @@ window.onload = function () {
   }
   const fields = [
     "name",
+    "age",
     "player",
     "role",
     "circle",

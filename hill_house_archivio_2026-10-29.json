@@ -1,0 +1,72 @@
+{
+  "format": "hillhouse-archive-v1",
+  "data": {
+    "session": "Halloween",
+    "general": "",
+    "clues": "",
+    "secrets": "",
+    "characters": [
+      {
+        "id": "3321f1aa-e98a-41f4-93dd-7f55db06b8c4",
+        "name": "Mary Jones",
+        "age": "36",
+        "player": "Giorgia",
+        "role": "Studioso / Professoressa",
+        "circle": "",
+        "drive": "",
+        "redroom": "Biblioteca piena di libri per bambini",
+        "unresolved": "Il fratellino Robert morto a 9 anni di polmonite quando lei aveva 12 anni",
+        "happyMemories": "Lei e suo fratello si raccontavano le storie prima di andare a dormire",
+        "marks": "",
+        "stats": "",
+        "charNotes": ""
+      },
+      {
+        "id": "6f2b81af-4bc7-45f6-ad39-6d2379c4ba7b",
+        "name": "Tersilia Valdes",
+        "age": "31",
+        "player": "Eleonora",
+        "role": "Arcano / Occultista",
+        "circle": "",
+        "drive": "",
+        "redroom": "",
+        "unresolved": "A 21 anni, con la sorella minore Adele, ha provato un rito in un libro trovato nella biblioteca di famiglia per gioco.\nAdele da quella notte non parla più e passa la giornata a disegnare sempre lo stesso simbolo ",
+        "happyMemories": "Le estati nella villa sul lago, quando lei e Adele si nascondevano in soffitta a leggere romanzi gotici a lume di candela",
+        "marks": "",
+        "stats": "",
+        "charNotes": ""
+      },
+      {
+        "id": "04eb42a0-ac27-43a0-a279-0f950d132955",
+        "name": "Pancrazio",
+        "age": "34",
+        "player": "Angelo",
+        "role": "Braccio / Espolatore",
+        "circle": "",
+        "drive": "",
+        "redroom": "",
+        "unresolved": "",
+        "happyMemories": "",
+        "marks": "",
+        "stats": "",
+        "charNotes": ""
+      },
+      {
+        "id": "56f00677-e1d1-4925-bab8-967e3a7f30a8",
+        "name": "Ophelia",
+        "age": "30",
+        "player": "Eliana",
+        "role": "Arcano / Occultista",
+        "circle": "",
+        "drive": "",
+        "redroom": "",
+        "unresolved": "Anni fa, per ottenere un libro di magia ha fatto un patto con un ambiguo collezionista che non le ha chiesto un compenso in denaro, ma le ha promesso che prima o poi le avrebbe chiesto un favore in cambio",
+        "happyMemories": "All'età di 20 anni, in una notte d'estate con degli amici in spiaggia una musica lontana aveva evocato in loro il desiderio di ballare illuminati solo dai fari della macchina a bordo strada.\nCome ricordo di quella serata, conserva una spilla che porta tutt'ora attaccata al vestito ",
+        "marks": "",
+        "stats": "",
+        "charNotes": ""
+      }
+    ]
+  },
+  "files": []
+}
