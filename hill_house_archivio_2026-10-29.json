@@ -29,7 +29,7 @@
         "role": "Arcano / Occultista",
         "circle": "",
         "drive": "",
-        "redroom": "",
+        "redroom": "Stanza da lettura con un camino e due poltrone, al centro della stanza un tavolino con una candela in parte consumanta e due copie dello stesso libro",
         "unresolved": "A 21 anni, con la sorella minore Adele, ha provato un rito in un libro trovato nella biblioteca di famiglia per gioco.\nAdele da quella notte non parla più e passa la giornata a disegnare sempre lo stesso simbolo ",
         "happyMemories": "Le estati nella villa sul lago, quando lei e Adele si nascondevano in soffitta a leggere romanzi gotici a lume di candela",
         "marks": "",
@@ -59,12 +59,27 @@
         "role": "Arcano / Occultista",
         "circle": "",
         "drive": "",
-        "redroom": "",
+        "redroom": "Piccolo salottino con un grammofono, dalla finestra entra una leggera brezza e dell'odore di salsedine",
         "unresolved": "Anni fa, per ottenere un libro di magia ha fatto un patto con un ambiguo collezionista che non le ha chiesto un compenso in denaro, ma le ha promesso che prima o poi le avrebbe chiesto un favore in cambio",
-        "happyMemories": "All'età di 20 anni, in una notte d'estate con degli amici in spiaggia una musica lontana aveva evocato in loro il desiderio di ballare illuminati solo dai fari della macchina a bordo strada.\nCome ricordo di quella serata, conserva una spilla che porta tutt'ora attaccata al vestito ",
+        "happyMemories": "All'età di 20 anni, in una notte d'estate con degli amici in spiaggia una musica lontana aveva evocato in loro il desiderio di ballare illuminati solo dai fari della macchina a bordo strada.\nCome ricordo di quella serata, conserva una spilla che porta tutt'ora attaccata al vestito",
         "marks": "",
         "stats": "",
         "charNotes": ""
+      },
+      {
+        "id": "af13fef4-bb4c-4e7b-8b4c-e93c3ffd3578",
+        "name": "Ettore Valmonte",
+        "age": "36",
+        "player": "Alessandro",
+        "role": "Braccio / Espolatore",
+        "circle": "",
+        "drive": "",
+        "redroom": "Camera dei giochi piena di modellini di aerei e un acquario",
+        "unresolved": "Unico sopravvissuto ad una spedizione del Caucaso, ora ha una bussola che indica un punto di New Faire",
+        "happyMemories": "Il primo volo da solo sopra le colline di casa, le sere passate a pescare sul fiume con il padre",
+        "marks": "",
+        "stats": "",
+        "charNotes": "La bussola punta alla stanza rossa di Hill House"
       }
     ]
   },
